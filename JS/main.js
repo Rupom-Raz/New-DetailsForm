@@ -372,14 +372,58 @@ Form2.addEventListener("submit", (e) => {
 });
 
 //Email Validation
-function emailOnchange(email) {}
+function emailOnchange(email) {
+    let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let emailError = document.getElementById("emailError");
+    if (!emailRegex.test(email)) {
+        emailError.innerHTML = "Email is Not Valid";
+    } else {
+        emailError.innerHTML = "";
+    }
+}
+
+//Mobile NO Validation
+function mobileNOOnchange(mobileNO) {
+    let mobileNORegex =
+        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
+    let mobileNOError = document.getElementById("mobileNOError");
+    if (!mobileNORegex.test(mobileNO)) {
+        mobileNOError.innerHTML = "Number is Not Valid";
+    } else {
+        mobileNOError.innerHTML = "";
+    }
+}
+
+//Guardian NO
+function guardianNOOnchange(guardianNO) {
+    let mobileNORegex =
+        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
+    let guardianNOError = document.getElementById("guardianNOError");
+
+    if (!mobileNORegex.test(guardianNO)) {
+        guardianNOError.innerHTML = "Number is Not Valid";
+    } else {
+        guardianNOError.innerHTML = "";
+    }
+}
+
+//LocalGuardian NO Validation
+
+function localGuardianNoOnchange(localGuardianNO) {
+    let localGuardianNOError = document.getElementById("localGuardianNOError");
+    let mobileNORegex =
+        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
+
+    if (!mobileNORegex.test(localGuardianNO)) {
+        localGuardianNOError.innerHTML = "Number is Not Valid ";
+    } else {
+        localGuardianNOError.innerHTML = "";
+    }
+}
 
 Form3.addEventListener("submit", (e) => {
     e.preventDefault();
-    let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let postalRegex = /^[0-9]{4}$/;
-    let mobileNORegex =
-        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
     let email = document.getElementById("email").value;
     let mobileNO = document.getElementById("mobileNO").value;
     let guardianNO = document.getElementById("guardianNO").value;
@@ -422,31 +466,23 @@ Form3.addEventListener("submit", (e) => {
     let par_VillageError = document.getElementById("par_VillageError");
     if (email === "" || email == null) {
         emailError.innerHTML = "Email is Required!";
-    } else if (!emailRegex.test(email)) {
-        emailError.innerHTML = "Email is Not Valid";
     } else {
         emailError.innerHTML = "";
     }
 
     if (mobileNO === "" || mobileNO == null) {
         mobileNOError.innerHTML = "Mobile NO is Required!";
-    } else if (!mobileNORegex.test(mobileNO)) {
-        mobileNOError.innerHTML = "Mobile NO is Not Valid!";
     } else {
         mobileNOError.innerHTML = "";
     }
 
     if (guardianNO === "" || guardianNO == null) {
         guardianNOError.innerHTML = "Mobile NO is Required!";
-    } else if (!mobileNORegex.test(guardianNO)) {
-        guardianNOError.innerHTML = "Mobile NO is Not Valid!";
     } else {
         guardianNOError.innerHTML = "";
     }
     if (localGuardianNO === "" || localGuardianNO == null) {
         localGuardianNOError.innerHTML = "Mobile NO is Required!";
-    } else if (!mobileNORegex.test(localGuardianNO)) {
-        localGuardianNOError.innerHTML = "Mobile NO is Not Valid!";
     } else {
         localGuardianNOError.innerHTML = "";
     }

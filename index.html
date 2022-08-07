@@ -281,19 +281,22 @@
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Mobile<span class="text-danger">
                                         *</span></label>
-                                <input type="number" id="mobileNO" name="" placeholder="Enter Your Mobile Number">
+                                <input onchange="return mobileNOOnchange(this.value)" type="number" id="mobileNO"
+                                    name="" placeholder="Enter Your Mobile Number">
                                 <div id="mobileNOError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Guardian Mobile NO<span class="text-danger">
                                         *</span></label>
-                                <input type="number" id="guardianNO" name="" placeholder="Guardian NO">
+                                <input onchange="return guardianNOOnchange(this.value)" type="number" id="guardianNO"
+                                    name="" placeholder="Guardian NO">
                                 <div id="guardianNOError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Local Guardian NO<span class="text-danger">
                                         *</span></label>
-                                <input type="number" id="localGuardianNO" name="" placeholder="Local Guardian NO">
+                                <input onchange="return localGuardianNoOnchange(this.value)" type="number"
+                                    id="localGuardianNO" name="" placeholder="Local Guardian NO">
                                 <div id="localGuardianNOError" class="error"></div>
                             </div>
                         </div>
