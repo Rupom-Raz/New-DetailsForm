@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Leading University</title>
+</head>
+
+<body>
+    <!-- Top part -->
+    <section>
+        <div class="container-fluid">
+            <div class="row mb-1 ">
+                <div class="col-12 col-md-4 "> <img class="img-fluid img" src="./images/logo.png" alt="">
+                </div>
+                <div class=" col-12 col-md-5 headingText mt-5">
+                    <h5 class="heading ">Application form for admisson</h5>
+                    <p class="UgProgram">Undergraduate Program</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <!-- Form ---------- 1 ------------>
+                    <form id="form1" action="/" method="post">
+                        <div class="row mt-4 ">
+                            <div class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label  ">Application Type<span class="text-danger">
+                                        *</span></label>
+                                <select onchange=" return applicationType(this)" id="selectField" class="form-select ">
+                                    <option value="">Select Type</option>
+                                    <option value="Local Student(Bangladeshi)">Local Student(Bangladeshi)</option>
+                                    <option value="International Student">International Student </option>
+                                </select>
+                                <div id="typeError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Full name<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return nameOnChange(this.value)" type="text" id="name" name="name"
+                                    placeholder="Enter your full name">
+                                <div id="nameError" class="error"></div>
+
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Program<span class="text-danger">
+                                        *</span></label></label>
+                                <select onchange="return programOnChange(this.value)" class="form-select" id="program">
+                                    <option value="">Select Program</option>
+                                    <option value="BBA">BBA</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="LAW">LAW</option>
+                                    <option value="EEE">EEE</option>
+                                </select>
+                                <div id="programError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Gender<span class="text-danger">
+                                        *</span></label>
+                                <select onchange="return genderOnChange(this.value)" class="form-select" id="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <div id="genderError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row  ">
+                            <div class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label ">Religion<span class="text-danger">
+                                        *</span></label>
+                                <select onchange="return religionOnChange(this.value)" class="form-select"
+                                    id="religion">
+                                    <option value="">Select Religion</option>
+                                    <option value="Muslim">Muslim</option>
+                                    <option value="Hindu">Hindu</option>
+                                </select>
+                                <div id="religionError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Nationality<span class="text-danger">
+                                        *</span></label>
+                                <select onchange="return nationalityOnChange(this.value)" class="form-select"
+                                    id="nationality">
+                                    <option value="">Select Nationality</option>
+                                    <option value="Bangladeshi">Bangladeshi</option>
+                                    <option value="Indian">Indian</option>
+                                    <option value="Nepali">Nepali</option>
+                                </select>
+                                <div id="nationError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Date of Birth<span class="text-danger">
+                                        *</span></label>
+                                <div id="date-picker-example"
+                                    class=" date_picker input-group   md-form md-outline input-with-post-icon datepicker"
+                                    inline="true">
+                                    <input onchange="return dateOnChange(this.value)" placeholder="Select date"
+                                        type="date" id="dob">
+                                </div>
+                                <div id="dobError" class="error"></div>
+                            </div>
+                            <div id="bloodGroup" class="form-group col-6 col-md-3 flex-column  interStudent">
+                                <label class="form-control-label ">Blood Group</label>
+                                <select class="form-select" id="bloodGroup">
+                                    <option value="">Select blood group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                            <div id="birth_cert" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Birth Certificate</label>
+                                <input type="text" id="birth_certificate" name="" placeholder="Birth certificate">
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div id="photo" class="form-group col-6 col-md-3  flex-column interStudent ">
+                                <label class="form-control-label ">Photo<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return photoValidation(this)" type="file" id="photoID"
+                                    accept=".jpg,.png,.gif,.jpeg">
+                                <div id="photoError" class="error"></div>
+                            </div>
+                            <div id="nation_id" class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label ">National ID</label>
+                                <input type="number" id="nation_ID" name="" placeholder="National ID">
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex ">
+                                <label class="form-control-label ">Passport NO<span id="passNoSpan" class="text-danger"
+                                        style="visibility: hidden;">
+                                        *</span></label>
+                                <input type="text" id="passport_NO" name="" placeholder="Passport NO">
+                                <div style="visibility: hidden" id="passNoError" class="error"></div>
+                            </div>
+                            <div id="hideBloodGr" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Blood Group</label>
+                                <select class="form-select" id="blood_Group">
+                                    <option value="">Select blood group</option>
+                                    <option value="">A+</option>
+                                    <option value="">AB-</option>
+                                </select>
+                            </div>
+                            <div id="pass_expire" class="form-group col-6 col-md-3 flex-column interStudent">
+                                <label class="form-control-label ">Passport Expire Date<span class="text-danger">
+                                        *</span></label>
+                                <input type="date" id="passExipireDate" name="" placeholder="Passport NO">
+                                <div id="passExpireError" class="error"></div>
+                            </div>
+                            <div id="passPhoto" class="form-group col-6 col-md-3  flex-column interStudent">
+                                <label class="form-control-label ">Passport Photocopy<span class="text-danger">
+                                        *</span></label>
+                                <input type="file" id="passportPhoto" name="">
+                                <div id="passPhotoError" class="error"></div>
+                            </div>
+                            <div id="tribal" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Tribal</label>
+                                <select class="form-select" id="tribalValue">
+                                    <option value="">Select Tribal</option>
+                                    <option value="Chakma">Chakma</option>
+                                    <option value="Monipuri">Monipuri</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="policeClearance" class="form-group col-6 col-md-3  flex-column interStudent">
+                                <label class="form-control-label ">Police Clearance<span class="text-danger">
+                                        *</span></label>
+                                <input type="file" id="police_clearence" name="">
+                                <div id="policeClearError" class="error"></div>
+                            </div>
+                            <div id="medicalCert" class="form-group col-6 col-md-3  flex-column interStudent">
+                                <label class="form-control-label ">Medical Certificate<span class="text-danger">
+                                        *</span></label>
+                                <input type="file" id="medicalCertificate" name="">
+                                <div id="mediCertError" class="error"></div>
+                            </div>
+                            <div id="hidePhoto" class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label ">Photo<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return photoValidation(this)" type="file" id="hidePhotoID" name=""
+                                    accept=".jpg,.png,.gif,.jpeg">
+                                <div id="hidePhotoError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Transport Route</label>
+                                <select id="route" class="form-select">
+                                    <option value="">Select Route</option>
+                                    <option value="Bypass">Bypass</option>
+                                    <option value="Surma Tower">Surma Tower</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="btn-box">
+                            <button id="next1" type="submit">Next</button>
+                        </div>
+                    </form>
+                    <!-- Form ------- 2 ----------- -->
+                    <form id="form2" method="post" action="/">
+                        <div class="row  mt-4">
+                            <div class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label ">Father Name<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return fatherNameOnchange(this.value)" type="text" id="fatherName"
+                                    name="lname" placeholder="Father Name">
+                                <div id="fatherNameError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Father Occupation<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return fatherOccupationOnChange(this.value)" type="text"
+                                    id="fatherOccupation" name="lname" placeholder="Father Occupation">
+                                <div id="fatherOccupationError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Father National ID</label>
+                                <input type="number" id="lname" name="lname" placeholder="Father National ID">
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Mother Name<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return motherNameOnchange(this.value)" type="text" id="motherName"
+                                    name="lname" placeholder="Mother Name">
+                                <div id="motherNameError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row   mt-3">
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Mother Occupation<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return motherOccupationOnchange(this.value)" type="text"
+                                    id="motherOccupation" name="lname" placeholder="Mother Occupation">
+                                <div id="motherOccupationError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Mother National ID</label>
+                                <input type="number" id="lname" name="lname" placeholder="Mother National ID">
+                            </div>
+                            <div class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label ">Guardian Photo<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="guardianPhotoHandle(this)" type="file" id="guardianPhoto"
+                                    accept=".jpg,.png,.jpeg">
+                                <div id="guardianPhotoError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Local Guardian Name<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return localGuardianNameOnchange(this.value)" type="text"
+                                    id="localGuardianName" name="lname" placeholder="Local Guardian Name">
+                                <div id="localGuardianNameError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label ">Local Guardian Address<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return localGuardianAddressOnchange(this.value)" type="text"
+                                    id="localGuardianAddress" name="" placeholder="Local Guardian Address">
+                                <div id="localGuardianAddressError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="btn-box">
+                            <button id="back1" type="button">Back</button>
+                            <button id="next2" type="submit">Next</button>
+                        </div>
+                    </form>
+                    <!-- Form ----------3----------- -->
+                    <form id="form3" onchange="return applicationType(this)" method="post" action="/">
+                        <div class="row form3">
+                            <div class="form-group col-6 col-md-3  flex-column">
+                                <label class="form-control-label ">Email<span class="text-danger">
+                                        *</span></label>
+                                <input onchange="return  emailOnchange(this.value)" type="text" id="email" name="email"
+                                    placeholder="Enter Your Email">
+                                <div id="emailError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Mobile<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="mobileNO" name="" placeholder="Enter Your Mobile Number">
+                                <div id="mobileNOError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Guardian Mobile NO<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="guardianNO" name="" placeholder="Guardian NO">
+                                <div id="guardianNOError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Local Guardian NO<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="localGuardianNO" name="" placeholder="Local Guardian NO">
+                                <div id="localGuardianNOError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <h5 class="text-center ">Present Address<span class="text-danger">
+                                    *</span></h5>
+                            <div id="division" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Division</label>
+                                <select id="pre_Division" class="form-select">
+                                    <option value="">Select Division</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Chittagong">Chittagong</option>
+                                    <option value="Rajshahi">Rajshahi</option>
+                                </select>
+                                <div id="pre_DivisionError" class="error"></div>
+                            </div>
+                            <div id="country" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Country</label>
+                                <select id="pre_Country" class="form-select">
+                                    <option value="">Select Country</option>
+                                    <option value="India">India</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                </select>
+                                <div id="pre_CountryError" class="error"></div>
+                            </div>
+                            <div id="district" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">District<span class="text-danger">
+                                        *</span></label>
+                                <select id="pre_District" class="form-select">
+                                    <option value="">Select District</option>
+                                    <option value="Narayngong">Narayngong</option>
+                                    <option value="Cumilla">Cumilla</option>
+                                    <option value="Rajshahi Dis">Rajshahi Dis</option>
+                                </select>
+                                <div id="pre_DistrictError" class="error"></div>
+                            </div>
+                            <div id="state" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">State/Division<span class="text-danger">
+                                        *</span></label>
+                                <select id="pre_State" class="form-select">
+                                    <option value="">Select State</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Asham">Asham</option>
+                                    <option value="Tripura">Tripura</option>
+                                </select>
+                                <div id="pre_StateError" class="error"></div>
+                            </div>
+
+                            <div id="localCity" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">City<span class="text-danger">
+                                        *</span></label>
+                                <select id="pre_City" class="form-select">
+                                    <option value="">Select City</option>
+                                    <option value="Cumilla city">Cumilla city</option>
+                                    <option value="Dhaka city">Dhaka city</option>
+                                    <option value="Rajshahi City">Rajshahi City</option>
+                                </select>
+                                <div id="pre_CityError" class="error"></div>
+                            </div>
+                            <div id="interCity" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">City<span class="text-danger">
+                                        *</span></label>
+                                <select id="pre_InterCity" class="form-select">
+                                    <option value="">Select City</option>
+                                    <option value="Ahmedabad">Ahmedabad</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                </select>
+                                <div id="pre_InterCityError" class="error"></div>
+                            </div>
+                            <div id="postalCode" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Postal Code<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="pre_Postal" name="" placeholder="Postal Code">
+                                <div id="pre_PostalError" class="error"></div>
+                            </div>
+                            <div id="village" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Village/House<span class="text-danger">
+                                        *</span></label>
+                                <input type="text" id="pre_Village" name="" placeholder="Village/House">
+                                <div id="pre_VillageError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <h5 class="text-center ">Permanent Address<span class="text-danger">*</span></h5>
+                            <div class="mb-3 form-check">
+                                <input onclick="FillAddressInput()" type="checkbox" class="form-check-input"
+                                    id="filladdress" name="filladdress">
+                                <label class="form-check-label" for="exampleCheck1">Same as Present Address</label>
+                            </div>
+                            <div id="par_division_div" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Division</label>
+                                <select id="par_Division" class="form-select">
+                                    <option value="">Select Division</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Chittagong">Chittagong</option>
+                                    <option value="Rajshahi">Rajshahi</option>
+                                </select>
+                                <div id="par_DivisionError" class="error"></div>
+
+                            </div>
+
+                            <div id="par_country_div" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Country</label>
+                                <select id="par_Country" class="form-select">
+                                    <option value="">Select Country</option>
+                                    <option value="India">India</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                </select>
+                                <div id="par_CountryError" class="error"></div>
+                            </div>
+                            <div id="par_district_div" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">District<span class="text-danger">
+                                        *</span></label>
+                                <select id="par_District" class="form-select">
+                                    <option value="">Select District</option>
+                                    <option value="Narayngong">Narayngong</option>
+                                    <option value="Cumilla">Cumilla</option>
+                                    <option value="Rajshahi Dis">Rajshahi Dis</option>
+                                </select>
+                                <div id="par_DistrictError" class="error"></div>
+                            </div>
+
+                            <div id="par_state_div" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">State/Division<span class="text-danger">
+                                        *</span></label>
+                                <select id="par_State" class="form-select">
+                                    <option value="">Select State</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="Asham">Asham</option>
+                                    <option value="Tripura">Tripura</option>
+                                </select>
+                                <div id="par_StateError" class="error"></div>
+                            </div>
+                            <div id="par_city_div" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">City<span class="text-danger">
+                                        *</span></label>
+                                <select id="par_City" class="form-select">
+                                    <option value="">Select City</option>
+                                    <option value="Cumilla city">Cumilla city</option>
+                                    <option value="Dhaka city">Dhaka city</option>
+                                    <option value="Rajshahi City">Rajshahi City</option>
+                                </select>
+                                <div id="par_CityError" class="error"></div>
+                            </div>
+
+                            <div id="par_interCity" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">City<span class="text-danger">
+                                        *</span></label>
+                                <select id="par_InterCity" class="form-select">
+                                    <option value="">Select City</option>
+                                    <option value="Ahmedabad">Ahmedabad</option>
+                                    <option value="Kolkata">Kolkata</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                </select>
+                                <div id="par_InterCityError" class="error"></div>
+                            </div>
+                            <div id="par_postal_Code" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Postal Code<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="par_Postal" name="" placeholder="Postal Code">
+                                <div id="par_PostalError" class="error"></div>
+                            </div>
+
+                            <div id="par_Village_div" class="form-group col-6 col-md-3 flex-column ">
+                                <label class="form-control-label ">Village/House<span class="text-danger">
+                                        *</span></label>
+                                <input type="text" id="par_Village" name="" placeholder="Village/House">
+                                <div id="par_VillageError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="btn-box">
+                            <button id="back2" type="button">Back</button>
+                            <button id="next3" type="submit">Next</button>
+                        </div>
+                    </form>
+                    <!-- Form --------4 --------------- -->
+                    <form id="form4" method="post" action="/">
+                        <div class="row">
+                            <h5 class="text-center ssc">Secondary School/Equivalent Information</h5>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Exam<span class="text-danger">
+                                        *</span></label>
+                                <select class="form-select" id="exam">
+                                    <option value="">Select Exam</option>
+                                    <option value="SSC">SSC</option>
+                                    <option value="Dakhil">Dakhil</option>
+                                </select>
+                                <div id="examError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Year<span class="text-danger">
+                                        *</span></label>
+                                <select id="year" class="form-select">
+                                    <option value="">Select Year</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                                <div id="yearError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Board<span class="text-danger">
+                                        *</span></label>
+                                <select id="board" class="form-select">
+                                    <option value="">Select Board</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Cumilla">Cumilla</option>
+                                    <option value="Sylhet">Sylhet</option>
+                                </select>
+                                <div id="boardError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Instituation Name<span class="text-danger">
+                                        *</span></label>
+                                <input type="text" id="instituateName" name="" placeholder="Enter Instituation Name">
+                                <div id="instituateNameError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Group<span class="text-danger">
+                                        *</span></label>
+                                <select id="group" class="form-select">
+                                    <option value="">Select Group</option>
+                                    <option value="Science">Science</option>
+                                    <option value="Commerce">Commerce</option>
+                                    <option value="Arts">Arts</option>
+                                </select>
+                                <div id="groupError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Roll NO<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="roll" name="" placeholder="Enter Roll NO">
+                                <div id="rollError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Registration NO<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="regNO" name="" placeholder="Enter Registration NO">
+                                <div id="regNOError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">GPA<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" min="2" max="5" id="gpa" name="" placeholder="Enter GPA">
+                                <div id="gpaError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <h5 class="text-center hsc">Higher Secondary/Equivalent Information</h5>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Exam<span class="text-danger">
+                                        *</span></label>
+                                <select id="hscExam" class="form-select">
+                                    <option value="">Select Exam</option>
+                                    <option value="hsc">HSC</option>
+                                    <option value="Dakhil">Dakhil</option>
+                                </select>
+                                <div id="hscExamError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Year<span class="text-danger">
+                                        *</span></label>
+                                <select id="hscYear" class="form-select">
+                                    <option value="">Select Year</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                </select>
+                                <div id="hscYearError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Board<span class="text-danger">
+                                        *</span></label>
+                                <select id="hscBoard" class="form-select">
+                                    <option value="">Select Board</option>
+                                    <option value="Dhaka">Dhaka</option>
+                                    <option value="Cumilla">Cumilla</option>
+                                    <option value="Sylhet">Sylhet</option>
+                                </select>
+                                <div id="hscBoardError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Instituation Name<span class="text-danger">
+                                        *</span></label>
+                                <input type="text" id="hscInstituteName" name="" placeholder="Enter Instituation Name">
+                                <div id="hscInstituteNameError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Group<span class="text-danger">
+                                        *</span></label>
+                                <select id="hscGroup" class="form-select">
+                                    <option value="">Select Group</option>
+                                    <option value="Science">Science</option>
+                                    <option value="Commerce">Commerce</option>
+                                    <option value="Arts">Arts</option>
+                                </select>
+                                <div id="hscGroupError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Roll NO<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="hscRoll" name="" placeholder="Enter Roll NO">
+                                <div id="hscRollError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">Registration NO<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" id="hscRegNO" name="" placeholder="Enter Registration NO">
+                                <div id="hscRegNOError" class="error"></div>
+                            </div>
+                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                                <label class="form-control-label ">GPA<span class="text-danger">
+                                        *</span></label>
+                                <input type="number" min="2" max="5" id="hscGpa" name="" placeholder="Enter GPA">
+                                <div id="hscGpaError" class="error"></div>
+                            </div>
+                        </div>
+                        <div class="btn-box">
+                            <button id="back3" type="button">Back</button>
+                            <button id="submit" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    <div class="step-row">
+                        <div id="progress"></div>
+                        <div id="step1" class="step-col"><span class="step-counter ">1</span><small>Personal
+                                Information</small> </div>
+                        <div id="step2" class="step-col"><span class="step-counter ">2</span><small>Guardian
+                                Information</small> </div>
+                        <div id="step3" class="step-col"><span class="step-counter ">3</span><small>Contact</small>
+                        </div>
+                        <div id="step4" class="step-col"><span class="step-counter ">4</span><small>Academic
+                                Qualification</small> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<script type="text/javascript">
+    //Form 1 photo file size validation
+    function photoValidation(input) {
+        let photo = document.getElementById("photoID").value;
+        let hidePhoto = document.getElementById("hidePhotoID");
+        let hidePhotoError = document.getElementById("hidePhotoError");
+        let photoError = document.getElementById("photoError");
+        let fileSize = input.files[0].size / 1000;
+
+        if (fileSize > 100) {
+            hidePhotoError.innerHTML = "File size exceeds 100 KB ";
+            photoError.innerHTML = "File size exceeds 100 KB";
+        } else if (fileSize <= 100) {
+            hidePhotoError.innerHTML = "";
+            photoError.innerHTML = "";
+        } else if (photo === "" || photo == null) {
+            photoError.innerHTML = "Photo is Required!";
+        } else if (hidePhoto === "" || hidePhoto == null) {
+            hidePhotoError.innerHTML = "Photo is Required!";
+        } else {
+            hidePhotoError.innerHTML = "";
+            photoError.innerHTML = "";
+        }
+    }
+
+    //Form 2 Guardian photo validation
+    function guardianPhotoHandle(input) {
+        let guardianPhoto = document.getElementById("guardianPhoto").value;
+        let guardianPhotoError = document.getElementById("guardianPhotoError");
+        let fileSize = input.files[0].size / 1000;
+
+        if (fileSize > 100) {
+            guardianPhotoError.innerHTML = "File size exceeds 100 KB";
+        } else if (fileSize <= 100) {
+            guardianPhotoError.innerHTML = "";
+        } else if (guardianPhoto === "" || guardianPhoto == null) {
+            guardianPhotoError.innerHTML = "Photo is Required!";
+        } else {
+            guardianPhotoError.innerHTML = "";
+        }
+    }
+
+</script>
+
+
+<script type="text/javascript" src="./JS/main.js"></script>
+<!-- Validation package -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+
+
+</html>
