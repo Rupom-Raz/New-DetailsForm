@@ -365,6 +365,15 @@ Form1.addEventListener("submit", (e) => {
     }
 });
 //Form 2 Validation
+
+//Get Father Name Value from LocalStorage
+
+let fatherName = document.getElementById("fatherName");
+
+fatherName.value =
+    getFromStorage.FatherName === "" || getFromStorage.FatherName == undefined
+        ? "Enter Father Name"
+        : getFromStorage.FatherName;
 //Father Name Validation
 function fatherNameOnchange(fatherName) {
     let fatherNameError = document.getElementById("fatherNameError");
@@ -372,10 +381,18 @@ function fatherNameOnchange(fatherName) {
     if (!nameRegex.test(fatherName)) {
         fatherNameError.innerHTML = "Name is Not Valid";
     } else {
+        getFromStorage.FatherName = fatherName;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         fatherNameError.innerHTML = "";
     }
 }
-
+//Get fatherOccupation value form localstroage
+let fatherOccupation = document.getElementById("fatherOccupation");
+fatherOccupation.value =
+    getFromStorage.FatherOccupation === "" ||
+    getFromStorage.FatherOccupation == undefined
+        ? ""
+        : getFromStorage.FatherOccupation;
 //Father Occupation
 function fatherOccupationOnChange(fatherOccupation) {
     console.log(fatherOccupation);
@@ -386,12 +403,13 @@ function fatherOccupationOnChange(fatherOccupation) {
     if (fatherOccupation === "" || fatherOccupation == null) {
         fatherOccupationError.innerHTML = "Filed is Required!";
     } else {
+        getFromStorage.FatherOccupation = fatherOccupation;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         fatherOccupationError.innerHTML = "";
     }
 }
 
 //Mother Name Validation
-
 function motherNameOnchange(motherName) {
     let nameRegex = /^[a-z ,.'-]+$/i;
     let motherNameError = document.getElementById("motherNameError");
