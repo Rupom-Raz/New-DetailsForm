@@ -26,9 +26,9 @@ let nameField = document.getElementById("name");
 let nameRegex = /^[a-z ,.'-]+$/i;
 
 nameField.value =
-    getFromStorage.name === "" || getFromStorage.name == undefined
-        ? "Enter Full Name"
-        : getFromStorage.name;
+    getFromStorage.Name === "" || getFromStorage.Name == undefined
+        ? ""
+        : getFromStorage.Name;
 
 function nameOnChange(name) {
     if (!nameRegex.test(name)) {
@@ -47,6 +47,11 @@ let programType = document.getElementById("programType");
 programType.innerHTML =
     getFromStorage.Program === "" || getFromStorage.Program == undefined
         ? "Select Program"
+        : getFromStorage.Program;
+
+programType.value =
+    getFromStorage.Program === "" || getFromStorage.Program == undefined
+        ? ""
         : getFromStorage.Program;
 
 //Program Validation
@@ -68,6 +73,10 @@ genderValType.innerHTML =
     getFromStorage.Gender === "" || getFromStorage.Gender == undefined
         ? "Select Gender"
         : getFromStorage.Gender;
+genderValType.value =
+    getFromStorage.Gender === "" || getFromStorage.Gender == undefined
+        ? ""
+        : getFromStorage.Gender;
 
 //Gender Validation
 let genderError = document.getElementById("genderError");
@@ -86,6 +95,10 @@ let religionValType = document.getElementById("religionValType");
 religionValType.innerHTML =
     getFromStorage.Religion === "" || getFromStorage.Religion == undefined
         ? "Select Religion"
+        : getFromStorage.Religion;
+religionValType.value =
+    getFromStorage.Religion === "" || getFromStorage.Religion == undefined
+        ? ""
         : getFromStorage.Religion;
 
 //Religion Validation
@@ -106,6 +119,10 @@ let nationalityValType = document.getElementById("nationalityValType");
 nationalityValType.innerHTML =
     getFromStorage.Nationality === "" || getFromStorage.Nationality == undefined
         ? "Select Nationality"
+        : getFromStorage.Nationality;
+nationalityValType.value =
+    getFromStorage.Nationality === "" || getFromStorage.Nationality == undefined
+        ? ""
         : getFromStorage.Nationality;
 
 //Nationality Validation
@@ -179,7 +196,7 @@ let bloodGrpType = document.getElementById("bloodGrpType");
 
 bloodGrpType.innerHTML =
     getFromStorage.BloodGroup === "" || getFromStorage.BloodGroup == undefined
-        ? ""
+        ? "Select Blood Group"
         : getFromStorage.BloodGroup;
 
 function bloodGroupOnchange(group) {
@@ -372,7 +389,7 @@ let fatherName = document.getElementById("fatherName");
 
 fatherName.value =
     getFromStorage.FatherName === "" || getFromStorage.FatherName == undefined
-        ? "Enter Father Name"
+        ? ""
         : getFromStorage.FatherName;
 //Father Name Validation
 function fatherNameOnchange(fatherName) {
@@ -386,6 +403,7 @@ function fatherNameOnchange(fatherName) {
         fatherNameError.innerHTML = "";
     }
 }
+
 //Get fatherOccupation value form localstroage
 let fatherOccupation = document.getElementById("fatherOccupation");
 fatherOccupation.value =
@@ -409,6 +427,26 @@ function fatherOccupationOnChange(fatherOccupation) {
     }
 }
 
+// Father NID Onchange
+let fatherNID = document.getElementById("fatherNID");
+
+fatherNID.value =
+    getFromStorage.FatherNIDNO === "" || getFromStorage.FatherNIDNO == undefined
+        ? ""
+        : getFromStorage.FatherNIDNO;
+
+function fatherNIDOnchange(NID) {
+    getFromStorage.FatherNIDNO = NID;
+    localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+}
+
+//Get Mother name from Local Storage
+let motherName = document.getElementById("motherName");
+motherName.value =
+    getFromStorage.MotherName === "" || getFromStorage.MotherName == undefined
+        ? ""
+        : getFromStorage.MotherName;
+
 //Mother Name Validation
 function motherNameOnchange(motherName) {
     let nameRegex = /^[a-z ,.'-]+$/i;
@@ -416,9 +454,21 @@ function motherNameOnchange(motherName) {
     if (!nameRegex.test(motherName)) {
         motherNameError.innerHTML = "Name is Not Valid";
     } else {
+        getFromStorage.MotherName = motherName;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         motherNameError.innerHTML = "";
     }
 }
+
+//Get Mother Occupation From localStorage
+
+let motherOccupation = document.getElementById("motherOccupation");
+
+motherOccupation.value =
+    getFromStorage.MotherOccupation === "" ||
+    getFromStorage.MotherOccupation == undefined
+        ? ""
+        : getFromStorage.MotherOccupation;
 
 //Mother Occupation Validation
 function motherOccupationOnchange(motherOccupation) {
@@ -428,11 +478,34 @@ function motherOccupationOnchange(motherOccupation) {
     if (motherOccupation === "" || motherOccupation == null) {
         motherOccupationError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.MotherOccupation = motherOccupation;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         motherOccupationError.innerHTML = "";
     }
 }
 
+// Mother NationalID onChange
+
+let motherNID = document.getElementById("motherNID");
+motherNID.value =
+    getFromStorage.MotherNID === "" || getFromStorage.MotherNID == undefined
+        ? ""
+        : getFromStorage.MotherNID;
+function motherNIDOnchange(NID) {
+    getFromStorage.MotherNID = NID;
+    localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+}
+
 //Local guardian Name
+
+let localGuardianName = document.getElementById("localGuardianName");
+
+localGuardianName.value =
+    getFromStorage.LocalGuardianName === "" ||
+    getFromStorage.LocalGuardianName == undefined
+        ? ""
+        : getFromStorage.LocalGuardianName;
+
 function localGuardianNameOnchange(localGuardianName) {
     let nameRegex = /^[a-z ,.'-]+$/i;
     let localGuardianNameError = document.getElementById(
@@ -441,11 +514,21 @@ function localGuardianNameOnchange(localGuardianName) {
     if (!nameRegex.test(localGuardianName)) {
         localGuardianNameError.innerHTML = "Name is Not Valid";
     } else {
+        getFromStorage.LocalGuardianName = localGuardianName;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         localGuardianNameError.innerHTML = "";
     }
 }
 
 //LocalGuardian Address Validation
+
+let localGuardianAddress = document.getElementById("localGuardianAddress");
+
+localGuardianAddress.value =
+    getFromStorage.LocalGuardianAddress === "" ||
+    getFromStorage.LocalGuardianAddress == undefined
+        ? ""
+        : getFromStorage.LocalGuardianAddress;
 function localGuardianAddressOnchange(localGuardianAddress) {
     let localGuardianAddressError = document.getElementById(
         "localGuardianAddressError"
@@ -454,6 +537,8 @@ function localGuardianAddressOnchange(localGuardianAddress) {
     if (localGuardianAddress === "" || localGuardianAddress == null) {
         localGuardianAddressError.innerHTML = "Filed is Required!";
     } else {
+        getFromStorage.LocalGuardianAddress = localGuardianAddress;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         localGuardianAddressError.innerHTML = "";
     }
 }
@@ -549,17 +634,33 @@ Form2.addEventListener("submit", (e) => {
 });
 
 //Email Validation
+
+let email = document.getElementById("email");
+email.value =
+    getFromStorage.StudentEmail === "" ||
+    getFromStorage.StudentEmail == undefined
+        ? ""
+        : getFromStorage.StudentEmail;
 function emailOnchange(email) {
     let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let emailError = document.getElementById("emailError");
     if (!emailRegex.test(email)) {
         emailError.innerHTML = "Email is Not Valid";
     } else {
+        getFromStorage.StudentEmail = email;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         emailError.innerHTML = "";
     }
 }
 
 //Mobile NO Validation
+
+let mobileNO = document.getElementById("mobileNO");
+mobileNO.value =
+    getFromStorage.StudentMobileNO === "" ||
+    getFromStorage.StudentMobileNO == undefined
+        ? ""
+        : getFromStorage.StudentMobileNO;
 function mobileNOOnchange(mobileNO) {
     let mobileNORegex =
         /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
@@ -567,11 +668,20 @@ function mobileNOOnchange(mobileNO) {
     if (!mobileNORegex.test(mobileNO)) {
         mobileNOError.innerHTML = "Number is Not Valid";
     } else {
+        getFromStorage.StudentMobileNO = mobileNO;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         mobileNOError.innerHTML = "";
     }
 }
 
 //Guardian NO
+
+let guardianNO = document.getElementById("guardianNO");
+guardianNO.value =
+    getFromStorage.GuardianMobileNO === "" ||
+    getFromStorage.GuardianMobileNO == undefined
+        ? ""
+        : getFromStorage.GuardianMobileNO;
 function guardianNOOnchange(guardianNO) {
     let mobileNORegex =
         /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
@@ -580,11 +690,20 @@ function guardianNOOnchange(guardianNO) {
     if (!mobileNORegex.test(guardianNO)) {
         guardianNOError.innerHTML = "Number is Not Valid";
     } else {
+        getFromStorage.GuardianMobileNO = guardianNO;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         guardianNOError.innerHTML = "";
     }
 }
 
 //LocalGuardian NO Validation
+let localGuardianNO = document.getElementById("localGuardianNO");
+
+localGuardianNO.value =
+    getFromStorage.LocalGuardianMobileNO === "" ||
+    getFromStorage.LocalGuardianMobileNO == undefined
+        ? ""
+        : getFromStorage.LocalGuardianMobileNO;
 
 function localGuardianNoOnchange(localGuardianNO) {
     let localGuardianNOError = document.getElementById("localGuardianNOError");
@@ -594,59 +713,384 @@ function localGuardianNoOnchange(localGuardianNO) {
     if (!mobileNORegex.test(localGuardianNO)) {
         localGuardianNOError.innerHTML = "Number is Not Valid ";
     } else {
+        getFromStorage.LocalGuardianMobileNO = localGuardianNO;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         localGuardianNOError.innerHTML = "";
     }
 }
 //Division filed Validation
+let localPreDivision = document.getElementById("localPreDivision");
+localPreDivision.innerHTML =
+    getFromStorage.LocalPreDivision === "" ||
+    getFromStorage.LocalPreDivision == undefined
+        ? "Select Division"
+        : getFromStorage.LocalPreDivision;
+localPreDivision.value =
+    getFromStorage.LocalPreDivision === "" ||
+    getFromStorage.LocalPreDivision == undefined
+        ? ""
+        : getFromStorage.LocalPreDivision;
 function divisionOnchange(division) {
     let pre_DivisionError = document.getElementById("pre_DivisionError");
     if (division === "" || division == null) {
         pre_DivisionError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.LocalPreDivision = division;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         pre_DivisionError.innerHTML = "";
     }
 }
 //Par Division filed Validation
-function parDivisionOnchange(division) {
-    console.log(division);
+let par_Division = document.getElementById("par_division");
 
+par_Division.innerHTML =
+    getFromStorage.LocalParDivision === "" ||
+    getFromStorage.LocalParDivision == undefined
+        ? "Select Division"
+        : getFromStorage.LocalParDivision;
+par_Division.value =
+    getFromStorage.LocalParDivision === "" ||
+    getFromStorage.LocalParDivision == undefined
+        ? ""
+        : getFromStorage.LocalParDivision;
+
+function parDivisionOnchange(division) {
     let par_DivisionError = document.getElementById("par_DivisionError");
     if (division === "" || division == null) {
         par_DivisionError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.LocalParDivision = division;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         par_DivisionError.innerHTML = "";
     }
 }
 
-//Country filed validation
-function districtOnchange(district) {
+//District filed validation
+
+let localPreDistrict = document.getElementById("localPreDistrict");
+localPreDistrict.innerHTML =
+    getFromStorage.LocalPreDistrict === "" ||
+    getFromStorage.LocalPreDistrict == undefined
+        ? "Select District"
+        : getFromStorage.LocalPreDistrict;
+localPreDistrict.value =
+    getFromStorage.LocalPreDistrict === "" ||
+    getFromStorage.LocalPreDistrict == undefined
+        ? ""
+        : getFromStorage.LocalPreDistrict;
+
+function predDistrictOnchange(district) {
     let pre_DistrictError = document.getElementById("pre_DistrictError");
     if (district === "" || district == null) {
         pre_DistrictError.innerHTML = "Flied is Required!";
     } else {
+        getFromStorage.LocalPreDistrict = district;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         pre_DistrictError.innerHTML = "";
     }
 }
 
+//Par District onchange
+
+let parDistrictVal = document.getElementById("parDistrictVal");
+
+parDistrictVal.innerHTML =
+    getFromStorage.ParmamnentDistrict === "" ||
+    getFromStorage.ParmamnentDistrict == undefined
+        ? "Select District"
+        : getFromStorage.ParmamnentDistrict;
+parDistrictVal.value =
+    getFromStorage.ParmamnentDistrict === "" ||
+    getFromStorage.ParmamnentDistrict == undefined
+        ? ""
+        : getFromStorage.ParmamnentDistrict;
+
+function parDistrictOnchange(district) {
+    let par_DistrictError = document.getElementById("par_DistrictError");
+    if (district === "" || district == null) {
+        par_DistrictError.innerHTML = "Field is Required!";
+    } else {
+        getFromStorage.ParmamnentDistrict = district;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        par_DistrictError.innerHTML = "";
+    }
+}
+
 //City filed Validation
+
+let localPreCity = document.getElementById("localPreCity");
+
+localPreCity.innerHTML =
+    getFromStorage.LocalPreCity === "" ||
+    getFromStorage.LocalPreCity == undefined
+        ? "Select City"
+        : getFromStorage.LocalPreCity;
+localPreCity.value =
+    getFromStorage.LocalPreCity === "" ||
+    getFromStorage.LocalPreCity == undefined
+        ? ""
+        : getFromStorage.LocalPreCity;
 
 function cityOnchange(city) {
     let pre_CityError = document.getElementById("pre_CityError");
     if (city === "" || city == null) {
         pre_CityError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.LocalPreCity = city;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         pre_CityError.innerHTML = "";
     }
 }
 
-//Postal filed validatin
+//Parmanent city onchange
+let parCityVal = document.getElementById("parCityVal");
 
+parCityVal.innerHTML =
+    getFromStorage.ParmanentCity === "" ||
+    getFromStorage.ParmanentCity == undefined
+        ? "Select City"
+        : getFromStorage.ParmanentCity;
+parCityVal.value =
+    getFromStorage.ParmanentCity === "" ||
+    getFromStorage.ParmanentCity == undefined
+        ? ""
+        : getFromStorage.ParmanentCity;
+
+function parCityOnchange(city) {
+    let par_CityError = (document.getElementById = "par_CityError");
+    if (city === "" || city == null) {
+        par_CityError.innerHTML = "Feild is Required!";
+    } else {
+        getFromStorage.ParmanentCity = city;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        par_CityError.innerHTML = "";
+    }
+}
+
+//Postal filed validatin
+let pre_Postal = document.getElementById("pre_Postal");
+
+pre_Postal.value =
+    getFromStorage.LocalPrePostal === "" ||
+    getFromStorage.LocalPrePostal == undefined
+        ? ""
+        : getFromStorage.LocalPrePostal;
 function postalOnchange(postalCode) {
     let pre_PostalError = document.getElementById("pre_PostalError");
     if (postalCode === "" || postalCode == null) {
         pre_PostalError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.LocalPrePostal = postalCode;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         pre_PostalError.innerHTML = "";
+    }
+}
+
+// Parmanent postal code onchange
+
+let par_Postal = document.getElementById("par_Postal");
+par_Postal.value =
+    getFromStorage.ParmanentPostal === "" ||
+    getFromStorage.ParmanentPostal == undefined
+        ? ""
+        : getFromStorage.ParmanentPostal;
+
+function parPostalOnchange(postal) {
+    console.log(postal);
+
+    let par_PostalError = document.getElementById("par_PostalError");
+    if (postal === "" || postal == null) {
+        par_PostalError.innerHTML = "Filed is Required!";
+    } else {
+        getFromStorage.ParmanentPostal = postal;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        par_PostalError.innerHTML = "";
+    }
+}
+
+//Pre Country Onchange
+let preCountryVal = document.getElementById("preCountryVal");
+
+preCountryVal.innerHTML =
+    getFromStorage.PresentCountry === "" ||
+    getFromStorage.PresentCountry == undefined
+        ? "Select Country"
+        : getFromStorage.PresentCountry;
+preCountryVal.value =
+    getFromStorage.PresentCountry === "" ||
+    getFromStorage.PresentCountry == undefined
+        ? ""
+        : getFromStorage.PresentCountry;
+
+function preCountryOnchange(country) {
+    let pre_CountryError = document.getElementById("pre_CountryError");
+    if (country === "" || country == null) {
+        pre_CountryError.innerHTML = "Field is Required!";
+    } else {
+        getFromStorage.PresentCountry = country;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        pre_CountryError.innerHTML = "";
+    }
+}
+
+//Pre State Onchange
+
+let preStateVal = document.getElementById("preStateVal");
+
+preStateVal.innerHTML =
+    getFromStorage.PresentState === "" ||
+    getFromStorage.PresentState == undefined
+        ? "Select State"
+        : getFromStorage.PresentState;
+preStateVal.value =
+    getFromStorage.PresentState === "" ||
+    getFromStorage.PresentState == undefined
+        ? ""
+        : getFromStorage.PresentState;
+
+function preStateOnchange(state) {
+    let pre_StateError = document.getElementById("pre_StateError");
+    if (state === "" || state == null) {
+        pre_StateError.innerHTML = "Filed is Required!";
+    } else {
+        getFromStorage.PresentState = state;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        pre_StateError.innerHTML = "";
+    }
+}
+
+//Pre city onchange
+let preCtyVal = document.getElementById("preCtyVal");
+preCtyVal.innerHTML =
+    getFromStorage.PresentCity === "" || getFromStorage.PresentCity == undefined
+        ? "Select a City"
+        : getFromStorage.PresentCity;
+preCtyVal.value =
+    getFromStorage.PresentCity === "" || getFromStorage.PresentCity == undefined
+        ? ""
+        : getFromStorage.PresentCity;
+
+function preCityOnchange(city) {
+    let pre_InterCityError = document.getElementById("pre_InterCityError");
+    if (city === "" || city == null) {
+        pre_InterCityError.innerHTML = "Field is required!";
+    } else {
+        getFromStorage.PresentCity = city;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        pre_InterCityError.innerHTML = "";
+    }
+}
+
+//Pre Village Onchange
+
+let pre_Village = document.getElementById("pre_Village");
+pre_Village.value =
+    getFromStorage.PresentVillage === "" ||
+    getFromStorage.PresentVillage == undefined
+        ? ""
+        : getFromStorage.PresentVillage;
+
+function preVillageOnchange(village) {
+    let pre_VillageError = document.getElementById("pre_VillageError");
+    if (village === "" || village == null) {
+        pre_VillageError.innerHTML = "Field is Required!";
+    } else {
+        getFromStorage.PresentVillage = village;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        pre_VillageError.innerHTML = "";
+    }
+}
+
+//Par Country Onchange
+
+let par_CountryValue = document.getElementById("par_CountryValue");
+par_CountryValue.innerHTML =
+    getFromStorage.ParmamnentCountry === "" ||
+    getFromStorage.ParmamnentCountry == undefined
+        ? "Select Country"
+        : getFromStorage.ParmamnentCountry;
+par_CountryValue.value =
+    getFromStorage.ParmamnentCountry === "" ||
+    getFromStorage.ParmamnentCountry == undefined
+        ? ""
+        : getFromStorage.ParmamnentCountry;
+
+function parCountryOnchange(country) {
+    let par_CountryError = document.getElementById("par_CountryError");
+    if (country === "" || country == null) {
+        par_CountryError.innerHTML = "Field is Required!";
+    } else {
+        getFromStorage.ParmamnentCountry = country;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        par_CountryError.innerHTML = "";
+    }
+}
+
+//Parmamnent state Onchange
+
+let par_StateValue = document.getElementById("par_StateValue");
+par_StateValue.innerHTML =
+    getFromStorage.ParmamnentState === "" ||
+    getFromStorage.ParmamnentState == undefined
+        ? "Select State"
+        : getFromStorage.ParmamnentState;
+par_StateValue.value =
+    getFromStorage.ParmamnentState === "" ||
+    getFromStorage.ParmamnentState == undefined
+        ? ""
+        : getFromStorage.ParmamnentState;
+
+function par_StateOnchange(state) {
+    let par_StateError = document.getElementById("par_StateError");
+    if (state === "" || state == null) {
+        par_StateError.innerHTML = "Filed is Required!";
+    } else {
+        getFromStorage.ParmamnentState = state;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        par_StateError.innerHTML = "";
+    }
+}
+
+//Parmamnent city onchange
+let par_cityVal = document.getElementById("par_cityVal");
+par_cityVal.innerHTML =
+    getFromStorage.ParmamnentCity === "" ||
+    getFromStorage.ParmamnentCity == undefined
+        ? "Select City"
+        : getFromStorage.ParmamnentCity;
+par_cityVal.value =
+    getFromStorage.ParmamnentCity === "" ||
+    getFromStorage.ParmamnentCity == undefined
+        ? ""
+        : getFromStorage.ParmamnentCity;
+
+function par_CityOnchange(city) {
+    let par_InterCityError = document.getElementById("par_InterCityError");
+    if (city === "" || city == null) {
+        par_InterCityError.innerHTML = "Filed is Required!";
+    } else {
+        getFromStorage.ParmamnentCity = city;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        par_InterCityError.innerHTML = "";
+    }
+}
+
+//Parmamnent village onchange
+let par_Village = document.getElementById("par_Village");
+par_Village.value =
+    getFromStorage.ParmamnentVillage === "" ||
+    getFromStorage.ParmamnentVillage == undefined
+        ? ""
+        : getFromStorage.ParmamnentVillage;
+
+function par_VillageOnchange(village) {
+    let par_VillageError = document.getElementById("par_VillageError");
+    if (village === "" || village == null) {
+        par_VillageError.innerHTML = "Filed is Required!";
+    } else {
+        getFromStorage.ParmamnentVillage = village;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        par_VillageError.innerHTML = "";
     }
 }
 
@@ -821,6 +1265,57 @@ Form3.addEventListener("submit", (e) => {
     }
 });
 
+//SSC Exam onchange
+
+let examTypeVal = document.getElementById("examTypeVal");
+
+examTypeVal.innerHTML =
+    getFromStorage.SscExamType === "" || getFromStorage.SscExamType == undefined
+        ? "Select Exam"
+        : getFromStorage.SscExamType;
+examTypeVal.value =
+    getFromStorage.SscExamType === "" || getFromStorage.SscExamType == undefined
+        ? ""
+        : getFromStorage.SscExamType;
+
+function sscExamOnChange(exam) {
+    let sscExamError = document.getElementById("sscExamError");
+    if (exam === "" || exam == null) {
+        sscExamError.innerHTML = "Field is Required!";
+    } else {
+        getFromStorage.SscExamType = exam;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        sscExamError.innerHTML = "";
+    }
+}
+
+//International secondary onchange
+
+let interNationSecondaryValue = document.getElementById(
+    "interNationSecondaryValue"
+);
+interNationSecondaryValue.innerHTML =
+    getFromStorage.InterNationalSecondaryExamType === "" ||
+    getFromStorage.InterNationalSecondaryExamType == undefined
+        ? "Select Exam"
+        : getFromStorage.InterNationalSecondaryExamType;
+interNationSecondaryValue.value =
+    getFromStorage.InterNationalSecondaryExamType === "" ||
+    getFromStorage.InterNationalSecondaryExamType == undefined
+        ? "Select Exam"
+        : getFromStorage.InterNationalSecondaryExamType;
+
+function interNationSecondaryOnchange(exam) {
+    let interExamError = document.getElementById("interExamError");
+    if (exam === "" || exam === null) {
+        interExamError.innerHTML = "Filed is Required!";
+    } else {
+        getFromStorage.InterNationalSecondaryExamType = exam;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        interExamError.innerHTML = "";
+    }
+}
+
 //Exam field Validation
 function examOnChange(exam) {
     let examError = document.getElementById("examError");
@@ -832,57 +1327,132 @@ function examOnChange(exam) {
 }
 
 //Year filed Validation
+
+let SscYearValue = document.getElementById("SscYearValue");
+
+SscYearValue.innerHTML =
+    getFromStorage.SscEquivalentYear === "" ||
+    getFromStorage.SscEquivalentYear == undefined
+        ? "Select Year"
+        : getFromStorage.SscEquivalentYear;
+SscYearValue.value =
+    getFromStorage.SscEquivalentYear === "" ||
+    getFromStorage.SscEquivalentYear == undefined
+        ? ""
+        : getFromStorage.SscEquivalentYear;
+
 function yearOnChange(year) {
     let yearError = document.getElementById("yearError");
     if (year === "" || year == null) {
         yearError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.SscEquivalentYear = year;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         yearError.innerHTML = "";
     }
 }
 
 //Board Feild Validation
+
+let boardValue = document.getElementById("boardValue");
+
+boardValue.innerHTML =
+    getFromStorage.SscEquivalentBoard === "" ||
+    getFromStorage.SscEquivalentBoard == undefined
+        ? "Select Board"
+        : getFromStorage.SscEquivalentBoard;
+boardValue.value =
+    getFromStorage.SscEquivalentBoard === "" ||
+    getFromStorage.SscEquivalentBoard == undefined
+        ? ""
+        : getFromStorage.SscEquivalentBoard;
+
 function onBoardChange(board) {
     let boardError = document.getElementById("boardError");
     if (board === "" || board == null) {
         boardError.innerHTML = "Filed is Required!";
     } else {
+        getFromStorage.SscEquivalentBoard = board;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         boardError.innerHTML = "";
     }
 }
 
 //Institute Name filed validation
+
+let instituateName = document.getElementById("instituateName");
+instituateName.value =
+    getFromStorage.SscEquivalentInstituteName === "" ||
+    getFromStorage.SscEquivalentInstituteName == undefined
+        ? ""
+        : getFromStorage.SscEquivalentInstituteName;
+
 function instituteNameOnchange(instituateName) {
     let instituateNameError = document.getElementById("instituateNameError");
     if (instituateName === "" || instituateName == null) {
         instituateNameError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.SscEquivalentInstituteName = instituateName;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         instituateNameError.innerHTML = "";
     }
 }
 
 //Group Name filed Validation
+
+let groupValue = document.getElementById("groupValue");
+
+groupValue.innerHTML =
+    getFromStorage.SscEquivalentGroupName === "" ||
+    getFromStorage.SscEquivalentGroupName == undefined
+        ? "Select Group"
+        : getFromStorage.SscEquivalentGroupName;
+groupValue.value =
+    getFromStorage.SscEquivalentGroupName === "" ||
+    getFromStorage.SscEquivalentGroupName == undefined
+        ? ""
+        : getFromStorage.SscEquivalentGroupName;
+
 function groupOnchange(groupName) {
     let groupError = document.getElementById("groupError");
     if (groupName === "" || groupName == null) {
         groupError.innerHTML = "Filed is Required!";
     } else {
+        getFromStorage.SscEquivalentGroupName = groupName;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         groupError.innerHTML = "";
     }
 }
 
 //SSC roll Validation
+
+let roll = document.getElementById("roll");
+
+roll.value =
+    getFromStorage.SscEquivalentRollNO === "" ||
+    getFromStorage.SscEquivalentRollNO == undefined
+        ? ""
+        : getFromStorage.SscEquivalentRollNO;
+
 function rollNoOnchange(roll) {
     let rollError = document.getElementById("rollError");
     let rollRegex = /^[0-9]{6}$/;
     if (!rollRegex.test(roll)) {
         rollError.innerHTML = "Roll is Not Valid";
     } else {
+        getFromStorage.SscEquivalentRollNO = roll;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         rollError.innerHTML = "";
     }
 }
 
 //SSC Registration filed
+let regNO = document.getElementById("regNO");
+regNO.value =
+    getFromStorage.SscEquivalentRegNO === "" ||
+    getFromStorage.SscEquivalentRegNO == undefined
+        ? ""
+        : getFromStorage.SscEquivalentRegNO;
 
 function registrationOnchange(registrationNo) {
     let registrationRegex = /^[0-9]{10}$/;
@@ -890,11 +1460,20 @@ function registrationOnchange(registrationNo) {
     if (!registrationRegex.test(registrationNo)) {
         regNOError.innerHTML = "Registration NO is Not Valid ";
     } else {
+        getFromStorage.SscEquivalentRegNO = registrationNo;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         regNOError.innerHTML = "";
     }
 }
 
 //Gpa filed Validation
+
+let gpa = document.getElementById("gpa");
+gpa.value =
+    getFromStorage.SscEquivalentGpa === "" ||
+    getFromStorage.SscEquivalentGpa == undefined
+        ? ""
+        : getFromStorage.SscEquivalentGpa;
 function GpaOnchange(gpa) {
     let GpaRegex = /^[2-5][.][0-9][0-9]$/;
     let gpaError = document.getElementById("gpaError");
@@ -902,40 +1481,111 @@ function GpaOnchange(gpa) {
     if (!GpaRegex.test(gpa)) {
         gpaError.innerHTML = "GPA Should be between 2.00 to 5.00";
     } else {
+        getFromStorage.SscEquivalentGpa = gpa;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         gpaError.innerHTML = "";
     }
 }
 
 //HSC Exam Field Validation
+let higherExamType = document.getElementById("higherExamType");
+higherExamType.innerHTML =
+    getFromStorage.HigherExamType === "" ||
+    getFromStorage.HigherExamType == undefined
+        ? "Select Exam"
+        : getFromStorage.HigherExamType;
+higherExamType.value =
+    getFromStorage.HigherExamType === "" ||
+    getFromStorage.HigherExamType == undefined
+        ? ""
+        : getFromStorage.HigherExamType;
+
 function hscExamOnchange(hsc) {
     let hscExamError = document.getElementById("hscExamError");
     if (hsc === "" || hsc == null) {
         hscExamError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.HigherExamType = hsc;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscExamError.innerHTML = "";
     }
 }
 
+// Inter HigherExamType onchange
+let interExamTypeValue = document.getElementById("interExamTypeValue");
+interExamTypeValue.innerHTML =
+    getFromStorage.InterHigherExamType === "" ||
+    getFromStorage.InterHigherExamType == undefined
+        ? "Select Exam"
+        : getFromStorage.InterHigherExamType;
+interExamTypeValue.value =
+    getFromStorage.InterHigherExamType === "" ||
+    getFromStorage.InterHigherExamType == undefined
+        ? ""
+        : getFromStorage.InterHigherExamType;
+
+function InterHigherExamType(exam) {
+    let interHigherExamError = document.getElementById("interHigherExamError");
+    if (exam === "" || exam == null) {
+        interHigherExamError.innerHTML = "Field is Required!";
+    } else {
+        getFromStorage.InterHigherExamType = exam;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        interHigherExamError.innerHTML = "";
+    }
+}
+
 //HSC year filed Validation
+let hscYearValue = document.getElementById("hscYearValue");
+hscYearValue.innerHTML =
+    getFromStorage.HSCYear === "" || getFromStorage.HSCYear == undefined
+        ? "Select Year"
+        : getFromStorage.HSCYear;
+hscYearValue.value =
+    getFromStorage.HSCYear === "" || getFromStorage.HSCYear == undefined
+        ? ""
+        : getFromStorage.HSCYear;
+
 function hscYearOnchange(hscYear) {
     let hscYearError = document.getElementById("hscYearError");
     if (hscYear === "" || hscYear == null) {
         hscYearError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.HSCYear = hscYear;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscYearError.innerHTML = "";
     }
 }
 
 //HSC Board validation
+
+let hscBoardValue = document.getElementById("hscBoardValue");
+hscBoardValue.innerHTML =
+    getFromStorage.HscBoard === "" || getFromStorage.HscBoard == undefined
+        ? "Select Board"
+        : getFromStorage.HscBoard;
+hscBoardValue.value =
+    getFromStorage.HscBoard === "" || getFromStorage.HscBoard == undefined
+        ? ""
+        : getFromStorage.HscBoard;
+
 function hscBoardOnchange(hscBoard) {
     let hscBoardError = document.getElementById("hscBoardError");
     if (hscBoard === "" || hscBoard == null) {
         hscBoardError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.HscBoard = hscBoard;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscBoardError.innerHTML = "";
     }
 }
 //HSC hscInstituteName filed Validation
+let hscInstituteName = document.getElementById("hscInstituteName");
+hscInstituteName.value =
+    getFromStorage.HscInstituteName === "" ||
+    getFromStorage.HscInstituteName == undefined
+        ? ""
+        : getFromStorage.HscInstituteName;
 
 function hscInstituteNameOnchange(instituateName) {
     let hscInstituteNameError = document.getElementById(
@@ -944,21 +1594,43 @@ function hscInstituteNameOnchange(instituateName) {
     if (instituateName === "" || instituateName == null) {
         hscInstituteNameError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.HscInstituteName = instituateName;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscInstituteNameError.innerHTML = "";
     }
 }
 
 //HSC Board filed validation
+
+let hscGroupValue = document.getElementById("hscGroupValue");
+hscGroupValue.innerHTML =
+    getFromStorage.HscGroupName === "" ||
+    getFromStorage.HscGroupName == undefined
+        ? "Select Group"
+        : getFromStorage.HscGroupName;
+hscGroupValue.value =
+    getFromStorage.HscGroupName === "" ||
+    getFromStorage.HscGroupName == undefined
+        ? ""
+        : getFromStorage.HscGroupName;
+
 function hscGroupOnchange(hscGroup) {
     let hscGroupError = document.getElementById("hscGroupError");
     if (hscGroup === "" || hscGroup == null) {
         hscGroupError.innerHTML = "Field is Required!";
     } else {
+        getFromStorage.HscGroupName = hscGroup;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscGroupError.innerHTML = "";
     }
 }
 
 //HSC Roll filed Validation
+let hscRoll = document.getElementById("hscRoll");
+hscRoll.value =
+    getFromStorage.HscRollNo === "" || getFromStorage.HscRollNo == undefined
+        ? ""
+        : getFromStorage.HscRollNo;
 
 function hscRollOnchange(hscRoll) {
     let hscRollError = document.getElementById("hscRollError");
@@ -966,20 +1638,37 @@ function hscRollOnchange(hscRoll) {
     if (!rollRegex.test(hscRoll)) {
         hscRollError.innerHTML = "Roll is Not Valid";
     } else {
+        getFromStorage.HscRollNo = hscRoll;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscRollError.innerHTML = "";
     }
 }
 
 // HSC Registration No Filed valid
+
+let hscRegNO = document.getElementById("hscRegNO");
+hscRegNO.value =
+    getFromStorage.HscRegNo === "" || getFromStorage.HscRegNo == undefined
+        ? ""
+        : getFromStorage.HscRegNo;
+
 function hscRegistrationNoOnchange(hscRegistrationNo) {
     let hscRegNOError = document.getElementById("hscRegNOError");
     let registrationRegex = /^[0-9]{10}$/;
     if (!registrationRegex.test(hscRegistrationNo)) {
         hscRegNOError.innerHTML = "Registration NO is Not Valid";
     } else {
+        getFromStorage.HscRegNo = hscRegistrationNo;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscRegNOError.innerHTML = "";
     }
 }
+
+let hscGpa = document.getElementById("hscGpa");
+hscGpa.value =
+    getFromStorage.HscGPA === "" || getFromStorage.HscGPA == undefined
+        ? ""
+        : getFromStorage.HscGPA;
 
 function hscGpaOnchange(hscGpa) {
     let hscGpaError = document.getElementById("hscGpaError");
@@ -987,6 +1676,8 @@ function hscGpaOnchange(hscGpa) {
     if (!GpaRegex.test(hscGpa)) {
         hscGpaError.innerHTML = "GPA Should be between 2.00 to 5.00";
     } else {
+        getFromStorage.HscGPA = hscGpa;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         hscGpaError.innerHTML = "";
     }
 }
@@ -1115,10 +1806,11 @@ Form4.addEventListener("submit", (e) => {
         hscGpaError.innerHTML = "";
     }
 
-    if (hscGpa === "" || hscGpa == null) {
-    } else {
-        window.location.pathname = "success.html";
-    }
+    // if (hscGpa === "" || hscGpa == null) {
+    //     window.location.pathname = "/";
+    // } else {
+    //     window.location.pathname = "success.html";
+    // }
 });
 
 Back1.onclick = function () {
@@ -1192,6 +1884,11 @@ function FillAddressInput() {
 //Get ApplicationType From Localstorage
 let appGetType = document.getElementById("appGetType");
 appGetType.innerHTML =
+    getFromStorage.ApplicationType === "" ||
+    getFromStorage.ApplicationType == undefined
+        ? "Select a Type"
+        : getFromStorage.ApplicationType;
+appGetType.value =
     getFromStorage.ApplicationType === "" ||
     getFromStorage.ApplicationType == undefined
         ? ""
@@ -1412,14 +2109,18 @@ function passportPhotoOnchange(input) {
 }
 
 //Form 2 Guardian photo validation
+
 function guardianPhotoHandle(input) {
+    let photo = input[0].name;
     let guardianPhoto = document.getElementById("guardianPhoto").value;
     let guardianPhotoError = document.getElementById("guardianPhotoError");
-    let fileSize = input.files[0].size / 1000;
+    let fileSize = input[0].size / 1000;
 
     if (fileSize > 100) {
         guardianPhotoError.innerHTML = "File size exceeds 100 KB";
     } else if (fileSize <= 100) {
+        getFromStorage.LocalGuardianPhoto = photo;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         guardianPhotoError.innerHTML = "";
     } else if (guardianPhoto === "" || guardianPhoto == null) {
         guardianPhotoError.innerHTML = "Photo is Required!";
