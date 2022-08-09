@@ -31,7 +31,8 @@
                             <div class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label  ">Application Type<span class="text-danger">
                                         *</span></label>
-                                <select onchange=" return applicationType(this)" id="selectField" class="form-select ">
+                                <select onchange=" return applicationType(this)" id="selectField" class="form-select"
+                                    name="ApplicationType">
                                     <option id="appGetType" value="">Select Type</option>
                                     <option value="Local Student(Bangladeshi)">Local Student(Bangladeshi)</option>
                                     <option value="International Student">International Student </option>
@@ -41,7 +42,7 @@
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Full name<span class="text-danger">
                                         *</span></label>
-                                <input onchange="return nameOnChange(this.value)" type="text" id="name" name="name"
+                                <input onchange="return nameOnChange(this.value)" type="text" id="name" name="Name"
                                     placeholder="Enter your full name">
                                 <div id="nameError" class="error"></div>
 
@@ -49,7 +50,8 @@
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Program<span class="text-danger">
                                         *</span></label></label>
-                                <select onchange="return programOnChange(this.value)" class="form-select" id="program">
+                                <select onchange="return programOnChange(this.value)" class="form-select" id="program"
+                                    name="Program">
                                     <option id="programType" value="">Select Program</option>
                                     <option value="BBA">BBA</option>
                                     <option value="CSE">CSE</option>
@@ -61,7 +63,8 @@
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Gender<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return genderOnChange(this.value)" class="form-select" id="gender">
+                                <select onchange="return genderOnChange(this.value)" class="form-select" id="gender"
+                                    name="Gender">
                                     <option id="genderValType" value="">Select Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -73,8 +76,8 @@
                             <div class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">Religion<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return religionOnChange(this.value)" class="form-select"
-                                    id="religion">
+                                <select onchange="return religionOnChange(this.value)" class="form-select" id="religion"
+                                    name="Religion">
                                     <option id="religionValType" value="">Select Religion</option>
                                     <option value="Muslim">Muslim</option>
                                     <option value="Hindu">Hindu</option>
@@ -85,7 +88,7 @@
                                 <label class="form-control-label ">Nationality<span class="text-danger">
                                         *</span></label>
                                 <select onchange="return nationalityOnChange(this.value)" class="form-select"
-                                    id="nationality">
+                                    id="nationality" name="Nationality">
                                     <option id="nationalityValType" value="">Select Nationality</option>
                                     <option value="Bangladeshi">Bangladeshi</option>
                                     <option value="Indian">Indian</option>
@@ -99,15 +102,15 @@
                                 <div id="date-picker-example"
                                     class=" date_picker input-group   md-form md-outline input-with-post-icon datepicker"
                                     inline="true">
-                                    <input onchange="return dateOnChange(this.value)" placeholder="Select date"
-                                        type="date" id="dob">
+                                    <input name="DateOfBirth" onchange="return dateOnChange(this.value)"
+                                        placeholder="Select date" type="date" id="dob">
                                 </div>
                                 <div id="dobError" class="error"></div>
                             </div>
                             <div id="bloodGroup" class="form-group col-6 col-md-3 flex-column  interStudent">
                                 <label class="form-control-label ">Blood Group</label>
                                 <select onchange="return interBloodGroup(this.value)" class="form-select"
-                                    id="bloodGroup">
+                                    id="bloodGroup" name="BloodGroup">
                                     <option id="interBloodGrp" value="">Select blood group</option>
                                     <option value="A+">A+</option>
                                     <option value="AB-">AB-</option>
@@ -116,34 +119,34 @@
                             <div id="birth_cert" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Birth Certificate</label>
                                 <input onchange="return birthCertOnchange(this.value)" type="text"
-                                    id="birth_certificate" name="" placeholder="Birth certificate">
+                                    id="birth_certificate" name="BirthCertificate" placeholder="Birth certificate">
                             </div>
                         </div>
                         <div class="row ">
                             <div id="photo" class="form-group col-6 col-md-3  flex-column interStudent ">
                                 <label class="form-control-label ">Photo<span class="text-danger">
                                         *</span></label>
-                                <input onchange="return photoValidation(this.files)" type="file" id="photoID"
-                                    accept=".jpg,.png,.gif,.jpeg">
+                                <input name="Photo" onchange="return photoValidation(this.files)" type="file"
+                                    id="photoID" accept=".jpg,.png,.gif,.jpeg">
                                 <div id="photoError" class="error"></div>
                             </div>
                             <div id="nation_id" class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">National ID</label>
                                 <input onchange="return nationIDOnchange(this.value)" type="number" id="nation_ID"
-                                    name="" placeholder="National ID">
+                                    name="NationalID" placeholder="National ID">
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex ">
                                 <label class="form-control-label ">Passport NO<span id="passNoSpan" class="text-danger"
                                         style="visibility: hidden;">
                                         *</span></label>
                                 <input onchange="return passPortNOonchange(this.value)" type="text" id="passport_NO"
-                                    name="" placeholder="Passport NO ">
+                                    name="PassportNo" placeholder="Passport NO ">
                                 <div style="visibility: hidden" id="passNoError" class="error"></div>
                             </div>
                             <div id="hideBloodGr" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Blood Group</label>
                                 <select onchange="return bloodGroupOnchange(this.value)" class="form-select"
-                                    id="blood_Group">
+                                    id="blood_Group" name="BloodGroup">
                                     <option id="bloodGrpType" value="">Select blood group</option>
                                     <option value="A+">A+</option>
                                     <option value="AB-">AB-</option>
@@ -153,20 +156,20 @@
                                 <label class="form-control-label ">Passport Expire Date<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return passPortExpireDate(this.value)" type="date" id="passExipireDate"
-                                    name="" placeholder="Passport NO">
+                                    name="PassportExpireDate" placeholder="Passport NO">
                                 <div id="passExpireError" class="error"></div>
                             </div>
                             <div id="passPhoto" class="form-group col-6 col-md-3  flex-column interStudent">
                                 <label class="form-control-label ">Passport Photocopy<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return passportPhotoOnchange(this.files) " type="file"
-                                    id="passportPhoto" name="" value="">
+                                    id="passportPhoto" name="PassportPhotoCopy" value="">
                                 <div id="passPhotoError" class="error"></div>
                             </div>
                             <div id="tribal" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Tribal</label>
                                 <select onchange="return tribalOnchange(this.value)" class="form-select"
-                                    id="tribalValue">
+                                    id="tribalValue" name="Tribal">
                                     <option id="tribalValType" value="">Select Tribal</option>
                                     <option value="Chakma">Chakma</option>
                                     <option value="Monipuri">Monipuri</option>
@@ -178,26 +181,27 @@
                                 <label class="form-control-label ">Police Clearance<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return policeClearenceOnchange(this.files)" type="file"
-                                    id="police_clearence" name="">
+                                    id="police_clearence" name="PoliceClearance">
                                 <div id="policeClearError" class="error"></div>
                             </div>
                             <div id="medicalCert" class="form-group col-6 col-md-3  flex-column interStudent">
                                 <label class="form-control-label ">Medical Certificate<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return medicalCertificateOnchange(this.files)" type="file"
-                                    id="medicalCertificate" name="">
+                                    id="medicalCertificate" name="MedicalCertificate">
                                 <div id="mediCertError" class="error"></div>
                             </div>
                             <div id="hidePhoto" class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">Photo<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return photoValidation(this.files)" type="file" id="hidePhotoID"
-                                    name="" accept=".jpg,.png,.gif,.jpeg">
+                                    name="Photo" accept=".jpg,.png,.gif,.jpeg">
                                 <div id="hidePhotoError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Transport Route</label>
-                                <select onchange="return transportOnchange(this.value)" id="route" class="form-select">
+                                <select name="Transport" onchange="return transportOnchange(this.value)" id="route"
+                                    class="form-select">
                                     <option id="transportValType" value="">Select Route</option>
                                     <option value="Bypass">Bypass</option>
                                     <option value="Surma Tower">Surma Tower</option>
@@ -215,26 +219,26 @@
                                 <label class="form-control-label ">Father Name<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return fatherNameOnchange(this.value)" type="text" id="fatherName"
-                                    name="lname" placeholder="Father Name">
+                                    name="FatherName" placeholder="Father Name">
                                 <div id="fatherNameError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Father Occupation<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return fatherOccupationOnChange(this.value)" type="text"
-                                    id="fatherOccupation" name="lname" placeholder="Father Occupation">
+                                    id="fatherOccupation" name="FatherOccupation" placeholder="Father Occupation">
                                 <div id="fatherOccupationError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Father National ID</label>
                                 <input onchange="fatherNIDOnchange(this.value)" type="number" id="fatherNID"
-                                    name="lname" placeholder="Father National ID">
+                                    name="FatherNID" placeholder="Father National ID">
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Mother Name<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return motherNameOnchange(this.value)" type="text" id="motherName"
-                                    name="lname" placeholder="Mother Name">
+                                    name="MotherName" placeholder="Mother Name">
                                 <div id="motherNameError" class="error"></div>
                             </div>
                         </div>
@@ -243,26 +247,26 @@
                                 <label class="form-control-label ">Mother Occupation<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return motherOccupationOnchange(this.value)" type="text"
-                                    id="motherOccupation" name="lname" placeholder="Mother Occupation">
+                                    id="motherOccupation" name="MotherOccupation" placeholder="Mother Occupation">
                                 <div id="motherOccupationError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Mother National ID</label>
                                 <input onchange="motherNIDOnchange(this.value)" type="number" id="motherNID"
-                                    name="lname" placeholder="Mother National ID">
+                                    name="MotherNID" placeholder="Mother National ID">
                             </div>
                             <div class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">Guardian Photo<span class="text-danger">
                                         *</span></label>
                                 <input onchange="guardianPhotoHandle(this.files)" type="file" id="guardianPhoto"
-                                    accept=".jpg,.png,.jpeg">
+                                    accept=".jpg,.png,.jpeg" name="GuardianPhoto">
                                 <div id="guardianPhotoError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Local Guardian Name<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return localGuardianNameOnchange(this.value)" type="text"
-                                    id="localGuardianName" name="lname" placeholder="Local Guardian Name">
+                                    id="localGuardianName" name="LocalGuardianName" placeholder="Local Guardian Name">
                                 <div id="localGuardianNameError" class="error"></div>
                             </div>
                         </div>
@@ -271,7 +275,8 @@
                                 <label class="form-control-label ">Local Guardian Address<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return localGuardianAddressOnchange(this.value)" type="text"
-                                    id="localGuardianAddress" name="" placeholder="Local Guardian Address">
+                                    id="localGuardianAddress" name="LocalGuardianAddress"
+                                    placeholder="Local Guardian Address">
                                 <div id="localGuardianAddressError" class="error"></div>
                             </div>
                         </div>
@@ -286,7 +291,7 @@
                             <div class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">Email<span class="text-danger">
                                         *</span></label>
-                                <input onchange="return  emailOnchange(this.value)" type="text" id="email" name="email"
+                                <input onchange="return  emailOnchange(this.value)" type="text" id="email" name="Email"
                                     placeholder="Enter Your Email">
                                 <div id="emailError" class="error"></div>
                             </div>
@@ -294,21 +299,21 @@
                                 <label class="form-control-label ">Mobile<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return mobileNOOnchange(this.value)" type="number" id="mobileNO"
-                                    name="" placeholder="Enter Your Mobile Number">
+                                    name="Mobile" placeholder="Enter Your Mobile Number">
                                 <div id="mobileNOError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Guardian Mobile NO<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return guardianNOOnchange(this.value)" type="number" id="guardianNO"
-                                    name="" placeholder="Guardian NO">
+                                    name="GuardianMobile" placeholder="Guardian NO">
                                 <div id="guardianNOError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Local Guardian NO<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return localGuardianNoOnchange(this.value)" type="number"
-                                    id="localGuardianNO" name="" placeholder="Local Guardian NO">
+                                    id="localGuardianNO" name="LocalGuardianMobile" placeholder="Local Guardian NO">
                                 <div id="localGuardianNOError" class="error"></div>
                             </div>
                         </div>
@@ -318,7 +323,7 @@
                             <div id="division" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Division</label>
                                 <select onchange="return divisionOnchange(this.value)" id="pre_Division"
-                                    class="form-select">
+                                    class="form-select" name="PresentAddress_Division">
                                     <option id="localPreDivision" value="">Select Division</option>
                                     <option value="Dhaka">Dhaka</option>
                                     <option value="Chittagong">Chittagong</option>
@@ -329,7 +334,7 @@
                             <div id="country" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Country</label>
                                 <select onchange="return preCountryOnchange(this.value)" id="pre_Country"
-                                    class="form-select">
+                                    class="form-select" name="PresentAddressCountry">
                                     <option id="preCountryVal" value="">Select Country</option>
                                     <option value="India">India</option>
                                     <option value="Nepal">Nepal</option>
@@ -341,7 +346,7 @@
                                 <label class="form-control-label ">District<span class="text-danger">
                                         *</span></label>
                                 <select onchange="return predDistrictOnchange(this.value)" id="pre_District"
-                                    class="form-select">
+                                    class="form-select" name="PresentAddress_District">
                                     <option id="localPreDistrict" value="">Select District</option>
                                     <option value="Narayngong">Narayngong</option>
                                     <option value="Cumilla">Cumilla</option>
@@ -352,8 +357,8 @@
                             <div id="state" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">State/Division<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return preStateOnchange(this.value)" id="pre_State"
-                                    class="form-select">
+                                <select name="PresentAddress_Division" onchange="return preStateOnchange(this.value)"
+                                    id="pre_State" class="form-select">
                                     <option id="preStateVal" value="">Select State</option>
                                     <option value="Kolkata">Kolkata</option>
                                     <option value="Asham">Asham</option>
@@ -365,7 +370,8 @@
                             <div id="localCity" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">City<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return cityOnchange(this.value)" id="pre_City" class="form-select">
+                                <select name="PresentAddressCity" onchange="return cityOnchange(this.value)"
+                                    id="pre_City" class="form-select">
                                     <option id="localPreCity" value="">Select City</option>
                                     <option value="Cumilla city">Cumilla city</option>
                                     <option value="Dhaka city">Dhaka city</option>
@@ -376,8 +382,8 @@
                             <div id="interCity" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">City<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return preCityOnchange(this.value)" id="pre_InterCity"
-                                    class="form-select">
+                                <select name="PresentAddressCity" onchange="return preCityOnchange(this.value)"
+                                    id="pre_InterCity" class="form-select">
                                     <option id="preCtyVal" value="">Select City</option>
                                     <option value="Ahmedabad">Ahmedabad</option>
                                     <option value="Kolkata">Kolkata</option>
@@ -389,14 +395,14 @@
                                 <label class="form-control-label ">Postal Code<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return postalOnchange(this.value)" type="number" id="pre_Postal"
-                                    name="" placeholder="Postal Code">
+                                    name="PresentAddress_Postal" placeholder="Postal Code">
                                 <div id="pre_PostalError" class="error"></div>
                             </div>
                             <div id="village" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Village/House<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return preVillageOnchange(this.value)" type="text" id="pre_Village"
-                                    name="" placeholder="Village/House">
+                                    name="PresentAddress_HouseNo_Or_Village" placeholder="Village/House">
                                 <div id="pre_VillageError" class="error"></div>
                             </div>
                         </div>
@@ -409,7 +415,8 @@
                             </div>
                             <div id="par_division_div" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Division</label>
-                                <select onchange="return parDivisionOnchange(this.value)" id="par_Division"
+                                <select name="PermanentAddress_Division"
+                                    onchange="return parDivisionOnchange(this.value)" id="par_Division"
                                     class="form-select">
                                     <option id="par_division" value="">Select Division</option>
                                     <option value="Dhaka">Dhaka</option>
@@ -422,8 +429,8 @@
 
                             <div id="par_country_div" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Country</label>
-                                <select onchange="return parCountryOnchange(this.value)" id="par_Country"
-                                    class="form-select">
+                                <select name="PermanentAddressCountry" onchange="return parCountryOnchange(this.value)"
+                                    id="par_Country" class="form-select">
                                     <option id="par_CountryValue" value="">Select Country</option>
                                     <option value="India">India</option>
                                     <option value="Nepal">Nepal</option>
@@ -434,7 +441,8 @@
                             <div id="par_district_div" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">District<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return parDistrictOnchange(this.value)" id="par_District"
+                                <select name="PermanentAddress_District"
+                                    onchange="return parDistrictOnchange(this.value)" id="par_District"
                                     class="form-select">
                                     <option id="parDistrictVal" value="">Select District</option>
                                     <option value="Narayngong">Narayngong</option>
@@ -447,8 +455,8 @@
                             <div id="par_state_div" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">State/Division<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return par_StateOnchange(this.value)" id="par_State"
-                                    class="form-select">
+                                <select name="PermanentAddress_Division" onchange="return par_StateOnchange(this.value)"
+                                    id="par_State" class="form-select">
                                     <option id="par_StateValue" value="">Select State</option>
                                     <option value="Kolkata">Kolkata</option>
                                     <option value="Asham">Asham</option>
@@ -459,7 +467,8 @@
                             <div id="par_city_div" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">City<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return parCityOnchange(this.value)" id="par_City" class="form-select">
+                                <select name="PermanentAddressCity" onchange="return parCityOnchange(this.value)"
+                                    id="par_City" class="form-select">
                                     <option id="parCityVal" value="">Select City</option>
                                     <option value="Cumilla city">Cumilla city</option>
                                     <option value="Dhaka city">Dhaka city</option>
@@ -471,8 +480,8 @@
                             <div id="par_interCity" class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">City<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return par_CityOnchange(this.value)" id="par_InterCity"
-                                    class="form-select">
+                                <select name="PermanentAddressCity" onchange="return par_CityOnchange(this.value)"
+                                    id="par_InterCity" class="form-select">
                                     <option id="par_cityVal" value="">Select City</option>
                                     <option value="Ahmedabad">Ahmedabad</option>
                                     <option value="Kolkata">Kolkata</option>
@@ -484,7 +493,7 @@
                                 <label class="form-control-label ">Postal Code<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return parPostalOnchange(this.value)" type="number" id="par_Postal"
-                                    name="" placeholder="Postal Code">
+                                    name="PermanentAddress_Postal" placeholder="Postal Code">
                                 <div id="par_PostalError" class="error"></div>
                             </div>
 
@@ -492,7 +501,7 @@
                                 <label class="form-control-label ">Village/House<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return par_VillageOnchange(this.value)" type="text" id="par_Village"
-                                    name="" placeholder="Village/House">
+                                    name="PermanentAddress_HouseNo_Or_Village" placeholder="Village/House">
                                 <div id="par_VillageError" class="error"></div>
                             </div>
                         </div>
@@ -508,7 +517,8 @@
                             <div class="form-group col-6 col-md-3 flex-column" id="localSecondaryExam">
                                 <label class="form-control-label ">Exam<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return sscExamOnChange(this.value)" class="form-select" id="exam">
+                                <select name="SecondarySchoolExam" onchange="return sscExamOnChange(this.value)"
+                                    class="form-select" id="exam">
                                     <option id="examTypeVal" value="">Select Exam</option>
                                     <option value="SSC">SSC</option>
                                     <option value="Dakhil">Dakhil</option>
@@ -519,7 +529,8 @@
                             <div class="form-group col-6 col-md-3 flex-column" id="interNationSecondaryExam">
                                 <label class="form-control-label ">Exam<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return interNationSecondaryOnchange(this.value)" class="form-select">
+                                <select name="SecondarySchoolExam"
+                                    onchange="return interNationSecondaryOnchange(this.value)" class="form-select">
                                     <option id="interNationSecondaryValue" value="">Select Exam</option>
                                     <option value="Secondary/Equivalent">Secondary/Equivalent</option>
                                 </select>
@@ -529,7 +540,8 @@
                             <div class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Year<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return yearOnChange(this.value)" id="year" class="form-select">
+                                <select name="SecondarySchoolYear" onchange="return yearOnChange(this.value)" id="year"
+                                    class="form-select">
                                     <option id="SscYearValue" value="">Select Year</option>
                                     <option value="2010">2010</option>
                                     <option value="2011">2011</option>
@@ -540,7 +552,8 @@
                             <div class="form-group col-6 col-md-3 flex-column " <label class="form-control-label ">
                                 Board<span class="text-danger">
                                     *</span></label>
-                                <select onchange="return onBoardChange(this.value)" id="board" class="form-select">
+                                <select name="SecondarySchoolBoard" onchange="return onBoardChange(this.value)"
+                                    id="board" class="form-select">
                                     <option id="boardValue" value="">Select Board</option>
                                     <option value="Dhaka">Dhaka</option>
                                     <option value="Cumilla">Cumilla</option>
@@ -552,7 +565,8 @@
                                 <label class="form-control-label ">Instituation Name<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return instituteNameOnchange(this.value)" type="text"
-                                    id="instituateName" name="" placeholder="Enter Instituation Name">
+                                    id="instituateName" name="SecondarySchoolInstitution"
+                                    placeholder="Enter Instituation Name">
                                 <div id="instituateNameError" class="error"></div>
                             </div>
                         </div>
@@ -560,7 +574,8 @@
                             <div class="form-group col-6 col-md-3 flex-column">
                                 <label class="form-control-label ">Group<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return groupOnchange(this.value)" id="group" class="form-select">
+                                <select name="SecondarySchoolGroup" onchange="return groupOnchange(this.value)"
+                                    id="group" class="form-select">
                                     <option id="groupValue" value="">Select Group</option>
                                     <option value="Science">Science</option>
                                     <option value="Commerce">Commerce</option>
@@ -571,22 +586,22 @@
                             <div class="form-group col-6 col-md-3 flex-column ">
                                 <label class="form-control-label ">Roll NO<span class="text-danger">
                                         *</span></label>
-                                <input onchange="return rollNoOnchange(this.value)" type="number" id="roll" name=""
-                                    placeholder="Enter Roll NO">
+                                <input onchange="return rollNoOnchange(this.value)" type="number" id="roll"
+                                    name="SecondarySchoolRollNo" placeholder="Enter Roll NO">
                                 <div id="rollError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Registration NO<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return registrationOnchange(this.value)" type="number" id="regNO"
-                                    name="" placeholder="Enter Registration NO">
+                                    name="SecondarySchoolRegistrationNo" placeholder="Enter Registration NO">
                                 <div id="regNOError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">GPA<span class="text-danger">
                                         *</span></label>
-                                <input onchange="return GpaOnchange(this.value)" type="text" id="gpa" name=""
-                                    placeholder="Enter GPA">
+                                <input onchange="return GpaOnchange(this.value)" type="text" id="gpa"
+                                    name="SecondarySchoolGPA" placeholder="Enter GPA">
                                 <div id="gpaError" class="error"></div>
                             </div>
                         </div>
@@ -595,7 +610,8 @@
                             <div class="form-group col-6 col-md-3 flex-column" id="localHigherExam">
                                 <label class="form-control-label ">Exam<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return hscExamOnchange(this.value)" id="hscExam" class="form-select">
+                                <select name="HigherSecondaryExam" onchange="return hscExamOnchange(this.value)"
+                                    id="hscExam" class="form-select">
                                     <option id="higherExamType" value="">Select Exam</option>
                                     <option value="hsc">HSC</option>
                                     <option value="Dakhil">Dakhil</option>
@@ -605,7 +621,8 @@
                             <div class="form-group col-6 col-md-3 flex-column" id="interNationHigherExam">
                                 <label class="form-control-label ">Exam<span class="text-danger">
                                         *</span></label>
-                                <select onchange=" return InterHigherExamType(this.value)" class="form-select">
+                                <select name="HigherSecondaryExam" onchange=" return InterHigherExamType(this.value)"
+                                    class="form-select">
                                     <option id="interExamTypeValue" value="">Select Exam</option>
                                     <option value="Higher Secondary/Equivalent">Higher Secondary/Equivalent</option>
                                 </select>
@@ -614,7 +631,8 @@
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Year<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return hscYearOnchange(this.value)" id="hscYear" class="form-select">
+                                <select name="HigherSecondaryYear" onchange="return hscYearOnchange(this.value)"
+                                    id="hscYear" class="form-select">
                                     <option id="hscYearValue" value="">Select Year</option>
                                     <option value="2010">2010</option>
                                     <option value="2011">2011</option>
@@ -625,8 +643,8 @@
                             <div class="form-group col-6 col-md-3 flex-column">
                                 <label class="form-control-label ">Board<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return hscBoardOnchange(this.value)" id="hscBoard"
-                                    class="form-select">
+                                <select name="HigherSecondaryBoard" onchange="return hscBoardOnchange(this.value)"
+                                    id="hscBoard" class="form-select">
                                     <option id="hscBoardValue" value="">Select Board</option>
                                     <option value="Dhaka">Dhaka</option>
                                     <option value="Cumilla">Cumilla</option>
@@ -638,7 +656,8 @@
                                 <label class="form-control-label ">Instituation Name<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return hscInstituteNameOnchange(this.value)" type="text"
-                                    id="hscInstituteName" name="" placeholder="Enter Instituation Name">
+                                    id="hscInstituteName" name="HigherSecondaryInstitution"
+                                    placeholder="Enter Instituation Name">
                                 <div id="hscInstituteNameError" class="error"></div>
                             </div>
                         </div>
@@ -646,8 +665,8 @@
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Group<span class="text-danger">
                                         *</span></label>
-                                <select onchange="return hscGroupOnchange(this.value)" id="hscGroup"
-                                    class="form-select">
+                                <select name="HigherSecondaryGroup" onchange="return hscGroupOnchange(this.value)"
+                                    id="hscGroup" class="form-select">
                                     <option id="hscGroupValue" value="">Select Group</option>
                                     <option value="Science">Science</option>
                                     <option value="Commerce">Commerce</option>
@@ -658,22 +677,23 @@
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Roll NO<span class="text-danger">
                                         *</span></label>
-                                <input onchange="return hscRollOnchange(this.value)" type="number" id="hscRoll" name=""
-                                    placeholder="Enter Roll NO">
+                                <input onchange="return hscRollOnchange(this.value)" type="number" id="hscRoll"
+                                    name="HigherSecondaryRollNo" placeholder="Enter Roll NO">
                                 <div id="hscRollError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">Registration NO<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return hscRegistrationNoOnchange(this.value)" type="number"
-                                    id="hscRegNO" name="" placeholder="Enter Registration NO">
+                                    id="hscRegNO" name="HigherSecondaryRegistrationNo"
+                                    placeholder="Enter Registration NO">
                                 <div id="hscRegNOError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
                                 <label class="form-control-label ">GPA<span class="text-danger">
                                         *</span></label>
-                                <input onchange="return hscGpaOnchange(this.value)" type="text" id="hscGpa" name=""
-                                    placeholder="Enter GPA">
+                                <input onchange="return hscGpaOnchange(this.value)" type="text" id="hscGpa"
+                                    name="HigherSecondaryGPA" placeholder="Enter GPA">
                                 <div id="hscGpaError" class="error"></div>
                             </div>
                         </div>

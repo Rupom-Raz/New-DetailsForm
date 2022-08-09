@@ -1685,6 +1685,7 @@ function hscGpaOnchange(hscGpa) {
 Form4.addEventListener("submit", (e) => {
     e.preventDefault();
     let exam = document.getElementById("exam").value;
+    let submitButton = document.getElementById("submit");
     let year = document.getElementById("year").value;
     let board = document.getElementById("board").value;
     let instituateName = document.getElementById("instituateName").value;
@@ -1806,11 +1807,11 @@ Form4.addEventListener("submit", (e) => {
         hscGpaError.innerHTML = "";
     }
 
-    // if (hscGpa === "" || hscGpa == null) {
-    //     window.location.pathname = "/";
-    // } else {
-    //     window.location.pathname = "success.html";
-    // }
+    submitButton.onclick = function () {
+        console.log("Submit");
+
+        window.location.pathname = "success.html";
+    };
 });
 
 Back1.onclick = function () {
