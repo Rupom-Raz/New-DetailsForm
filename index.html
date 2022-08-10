@@ -135,7 +135,13 @@
                                 <input onchange="return nationIDOnchange(this.value)" type="number" id="nation_ID"
                                     name="NationalID" placeholder="National ID">
                             </div>
-                            <div class="form-group col-6 col-md-3 flex-column  ">
+                            <div id="localPassNo" class="form-group col-6 col-md-3 flex-column  ">
+                                <label class="form-control-label ">Passport NO</label></label>
+                                <input onchange="return localPassPortNOonchange(this.value)" type="text"
+                                    id="passport_NO" name="PassportNo" placeholder="Passport NO ">
+
+                            </div>
+                            <div id="interPassNo" class="form-group col-6 col-md-3 flex-column  ">
                                 <label class="form-control-label ">Passport NO<span id="passNoSpan" class="text-danger"
                                         style="visibility: hidden;">
                                         *</span></label>
