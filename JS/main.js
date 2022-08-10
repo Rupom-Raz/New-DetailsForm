@@ -29,6 +29,128 @@ nameField.value =
     getFromStorage.Name === "" || getFromStorage.Name == undefined
         ? ""
         : getFromStorage.Name;
+let ApplicationTypeValue;
+
+function applicationType(type) {
+    let typeErrorMsg = document.getElementById("typeError");
+    let appGetType = document.getElementById("appGetType");
+
+    if (type.value === "" || type.value == null) {
+        typeErrorMsg.innerHTML = "Please Select a Field";
+    } else {
+        getFromStorage.ApplicationType = type.value;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        typeErrorMsg.innerHTML = "";
+        ApplicationTypeValue = type.value;
+        console.log(type.value);
+    }
+    console.log(ApplicationTypeValue);
+
+    let bloodGroup = document.getElementById("bloodGroup");
+    let photo = document.getElementById("photo");
+    let hideBloodGr = document.getElementById("hideBloodGr");
+    let birth_cert = document.getElementById("birth_cert");
+    let medicalCert = document.getElementById("medicalCert");
+    let tribal = document.getElementById("tribal");
+    let passNoSpan = document.getElementById("passNoSpan");
+    let passNoError = document.getElementById("passNoError");
+    let hidePhoto = document.getElementById("hidePhoto");
+    let policeClearance = document.getElementById("policeClearance");
+    let passPhoto = document.getElementById("passPhoto");
+    let nation_id = document.getElementById("nation_id");
+    let pass_expire = document.getElementById("pass_expire");
+    9;
+
+    let local_hidden = document.getElementById("local_hidden");
+    let division = document.getElementById("division");
+    let country = document.getElementById("country");
+    let state = document.getElementById("state");
+    let district = document.getElementById("district");
+    let localCity = document.getElementById("localCity");
+    let interCity = document.getElementById("interCity");
+    let village = document.getElementById("village");
+    let par_division_div = document.getElementById("par_division_div");
+    let par_district_div = document.getElementById("par_district_div");
+    let par_city_div = document.getElementById("par_city_div");
+    let par_postal_Code = document.getElementById("par_postal_Code");
+    let par_country_div = document.getElementById("par_country_div");
+    let par_state_div = document.getElementById("par_state_div");
+    let par_Village_div = document.getElementById("par_Village_div");
+    let par_interCity = document.getElementById("par_interCity");
+    let localSecondaryExam = document.getElementById("localSecondaryExam");
+    let localHigherExam = document.getElementById("localHigherExam");
+    let interNationHigherExam = document.getElementById(
+        "interNationHigherExam"
+    );
+    let interNationSecondaryExam = document.getElementById(
+        "interNationSecondaryExam"
+    );
+
+    if (type.value === "International Student") {
+        interNationHigherExam.style.display = "block";
+        interNationSecondaryExam.style.display = "block";
+        localSecondaryExam.style.display = "none";
+        localHigherExam.style.display = "none";
+        bloodGroup.style.display = "block";
+        photo.style.display = "block";
+        pass_expire.style.display = "block";
+        policeClearance.style.display = "block";
+        medicalCert.style.display = "block";
+        passPhoto.style.display = "block";
+        birth_cert.style.display = "none";
+        hideBloodGr.style.display = "none";
+        tribal.style.display = "none";
+        hidePhoto.style.display = "none";
+        nation_id.style.display = "none";
+        division.style.display = "none";
+        country.style.display = "block";
+        district.style.display = "none";
+        localCity.style.display = "none";
+        postalCode.style.display = "none";
+        par_division_div.style.display = "none";
+        par_district_div.style.display = "none";
+        par_city_div.style.display = "none";
+        par_postal_Code.style.display = "none";
+        passNoSpan.style.visibility = "visible";
+        passNoError.style.visibility = "visible";
+    } else if (type.value === "Local Student(Bangladeshi)") {
+        interNationHigherExam.style.display = "none";
+        interNationSecondaryExam.style.display = "none";
+        localSecondaryExam.style.display = "block";
+        localHigherExam.style.display = "block";
+        bloodGroup.style.display = "none";
+        photo.style.display = "none";
+        passNoSpan.style.visibility = "none";
+        passPhoto.style.display = "none";
+        policeClearance.style.display = "none";
+        medicalCert.style.display = "none";
+        pass_expire.style.display = "none";
+        birth_cert.style.display = "block";
+        nation_id.style.display = "block";
+        hidePhoto.style.display = "block";
+        tribal.style.display = "block";
+        state.style.display = "none";
+        country.style.display = "none";
+        interCity.style.display = "none";
+        village.style.display = "none";
+        par_division_div.style.display = "block";
+        par_district_div.style.display = "block";
+        par_interCity.style.display = "none";
+
+        par_postal_Code.style.display = "block";
+        par_country_div.style.display = "none";
+        par_state_div.style.display = "none";
+        par_Village_div.style.display = "none";
+    }
+
+    if (type.value === "" || type.value == null) {
+        Next1.onclick = function () {
+            Form1.style.left = "";
+            Form2.style.left = "";
+            progress.style.width = "0%";
+        };
+    }
+}
 
 function nameOnChange(name) {
     if (!nameRegex.test(name)) {
@@ -181,27 +303,30 @@ function nationIDOnchange(ID) {
 
 //Get Passport NO From LocalStorage
 let passport_NO = document.getElementById("passport_NO");
+let passNoError = document.getElementById("passNoError");
 passport_NO.value =
     getFromStorage.PassportNO === "" || getFromStorage.PassportNO == undefined
         ? ""
         : getFromStorage.PassportNO;
 
 function passPortNOonchange(NO) {
-    getFromStorage.PassportNO = NO;
-    localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+    if (NO === "" || NO == null) {
+        passNoError.innerHTML = "Pass NO is Required!";
+    } else {
+        getFromStorage.PassportNO = NO;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        passNoError.innerHTML = "";
+    }
 }
 
 //Get Blood Group from Localstorage
 let bloodGrpType = document.getElementById("bloodGrpType");
-
 bloodGrpType.innerHTML =
     getFromStorage.BloodGroup === "" || getFromStorage.BloodGroup == undefined
         ? "Select Blood Group"
         : getFromStorage.BloodGroup;
 
 function bloodGroupOnchange(group) {
-    console.log(group);
-
     getFromStorage.BloodGroup = group;
     localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
 }
@@ -231,7 +356,7 @@ function transportOnchange(route) {
 }
 //Get Passport Expire Date from localStorage
 let passExipireDate = document.getElementById("passExipireDate");
-
+let passExpireError = document.getElementById("passExpireError");
 passExipireDate.value =
     getFromStorage.PassExpireDate === "" ||
     getFromStorage.PassExpireDate == undefined
@@ -239,8 +364,13 @@ passExipireDate.value =
         : getFromStorage.PassExpireDate;
 
 function passPortExpireDate(date) {
-    getFromStorage.PassExpireDate = date;
-    localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+    if (date === "" || date == null) {
+        passExpireError.innerHTML = "Expire Date is Required!";
+    } else {
+        getFromStorage.PassExpireDate = date;
+        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
+        passExpireError.innerHTML = "";
+    }
 }
 
 // Get Inter BloodGroup value from localstorage
@@ -255,14 +385,27 @@ function interBloodGroup(bloodGroup) {
     localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
 }
 //Form1 Validation Check
-Form1.addEventListener("submit", (e) => {
-    e.preventDefault();
+
+function onSubmit1(e) {
     let typeErrorMsg = document.getElementById("typeError");
     let programError = document.getElementById("programError");
     let genderError = document.getElementById("genderError");
     let religionError = document.getElementById("religionError");
     let nationError = document.getElementById("nationError");
     let dobError = document.getElementById("dobError");
+    let passportExpire_Display =
+        document.getElementById("pass_expire").style.display;
+
+    let InterphotoDisplay = document.getElementById("photo").style.display;
+    let passport_NODisplay =
+        document.getElementById("passport_NO").style.display;
+    let passportPhoto_Display =
+        document.getElementById("passPhoto").style.display;
+    let police_clearenceDisplay =
+        document.getElementById("policeClearance").style.display;
+    let medicalCertificate_Display =
+        document.getElementById("medicalCert").style.display;
+
     let photoError = document.getElementById("photoError");
     let passNoError = document.getElementById("passNoError");
     let passPhotoError = document.getElementById("passPhotoError");
@@ -289,6 +432,7 @@ Form1.addEventListener("submit", (e) => {
     let passport_NO = document.getElementById("passport_NO").value;
     let blood_Group = document.getElementById("blood_Group").value;
     let passExipireDate = document.getElementById("passExipireDate").value;
+
     let passportPhoto = document.getElementById("passportPhoto").value;
     let tribal = document.getElementById("tribal").value;
     let police_clearence = document.getElementById("police_clearence").value;
@@ -297,90 +441,114 @@ Form1.addEventListener("submit", (e) => {
 
     if (applicationType === "" || applicationType == null) {
         typeErrorMsg.innerHTML = "Please Select Type";
+        e.preventDefault();
     } else {
         typeErrorMsg.innerHTML = "";
     }
 
     if (names === "" || names == null) {
         nameErrorMsg.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         nameErrorMsg.innerHTML = "";
     }
     if (program === "" || program == null) {
         programError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         programError.innerHTML = "";
     }
     if (Gender === "" || Gender == null) {
         genderError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         genderError.innerHTML = "";
     }
     if (religion === "" || religion == null) {
         religionError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         religionError.innerHTML = "";
     }
     if (nationality === "" || nationality == null) {
         nationError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         nationError.innerHTML = "";
     }
     if (dob === "" || dob == null) {
         dobError.innerHTML = "Filed is Required!";
+        e.preventDefault();
     } else {
         dobError.innerHTML = "";
     }
-    if (photo === "" || photo == null) {
+    if (InterphotoDisplay === "block" && (photo === "" || photo == null)) {
+        e.preventDefault();
         photoError.innerHTML = "Photo is Required!";
     } else {
         photoError.innerHTML = "";
     }
     if (hidePhoto === "" || hidePhoto == null) {
         hidePhotoError.innerHTML = "Photo is Required!";
+        e.preventDefault();
     } else {
         hidePhotoError.innerHTML = "";
     }
-    if (passport_NO === "" || passport_NO == null) {
+    if (
+        passport_NODisplay === "block" &&
+        (passport_NO === "" || passport_NO == null)
+    ) {
+        e.preventDefault();
         passNoError.innerHTML = "Passport NO is Required!";
     } else {
         passNoError.innerHTML = "";
     }
-    if (passExipireDate === "" || passExipireDate == null) {
+    if (
+        passportExpire_Display === "block" &&
+        (passExipireDate === "" || passExipireDate == null)
+    ) {
+        e.preventDefault();
         passExpireError.innerHTML = "Expire Date is Required!";
     } else {
         passExpireError.innerHTML = "";
     }
-    if (passportPhoto === "" || passportPhoto == null) {
+    if (
+        passportPhoto_Display === "block" &&
+        (passportPhoto === "" || passportPhoto == null)
+    ) {
+        e.preventDefault();
         passPhotoError.innerHTML = "Passport Photo is Required!";
     } else {
         passPhotoError.innerHTML = "";
     }
-    if (police_clearence === "" || police_clearence == null) {
+    if (
+        police_clearenceDisplay === "block" &&
+        (police_clearence === "" || police_clearence == null)
+    ) {
+        e.preventDefault();
         policeClearError.innerHTML = "Clearance is Required!";
     } else {
         policeClearError.innerHTML = "";
     }
-    if (medicalCertificate === "" || medicalCertificate == null) {
+    if (
+        medicalCertificate_Display === "block" &&
+        (medicalCertificate === "" || medicalCertificate == null)
+    ) {
+        e.preventDefault();
         mediCertError.innerHTML = "Certificate is Required!";
     } else {
         mediCertError.innerHTML = "";
     }
+    console.log(e.defaultPrevented);
 
-    if (dob === "" || dob == null) {
-        Next1.onclick = function () {
-            Form1.style.left = "";
-            Form2.style.left = "";
-            progress.style.width = "";
-        };
-    } else {
-        Next1.onclick = function () {
-            Form1.style.left = "-4000px";
-            Form2.style.left = "0px";
-            progress.style.width = "50%";
-        };
+    if (!e.defaultPrevented) {
+        e.preventDefault();
+        Form1.style.left = "-4000px";
+        Form2.style.left = "0px";
+        progress.style.width = "50%";
     }
-});
+}
+
 //Form 2 Validation
 
 //Get Father Name Value from LocalStorage
@@ -543,10 +711,7 @@ function localGuardianAddressOnchange(localGuardianAddress) {
     }
 }
 
-Form2.addEventListener("submit", (e) => {
-    e.preventDefault();
-    //Ragex
-
+function onSubmit2(e) {
     let fatherName = document.getElementById("fatherName").value;
     let fatherOccupation = document.getElementById("fatherOccupation").value;
     let fatherNameError = document.getElementById("fatherNameError");
@@ -575,63 +740,66 @@ Form2.addEventListener("submit", (e) => {
 
     if (fatherName === "" || fatherName == null) {
         fatherNameError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else if (!nameRegex.test(fatherName)) {
         fatherNameError.innerHTML = "Name is Not Valid!";
+        e.preventDefault();
     } else {
         fatherNameError.innerHTML = "";
     }
     if (fatherOccupation === "" || fatherOccupation == null) {
         fatherOccupationError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         fatherNameError.innerHTML = "";
     }
     if (motherName === "" || motherName == null) {
         motherNameError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else if (!nameRegex.test(motherName)) {
         motherNameError.innerHTML = "Name is Not Valid!";
+        e.preventDefault();
     } else {
         motherNameError.innerHTML = "";
     }
 
     if (motherOccupation === "" || motherOccupation == null) {
         motherOccupationError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         motherOccupationError.innerHTML = "";
     }
 
     if (guardianPhoto === "" || guardianPhoto == null) {
         guardianPhotoError.innerHTML = "Photo is Required!";
+        e.preventDefault();
     } else {
         guardianPhotoError.innerHTML = "";
     }
 
     if (localGuardianName === "" || localGuardianName == null) {
         localGuardianNameError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else if (!nameRegex.test(localGuardianName)) {
         localGuardianNameError.innerHTML = "Name is Not Valid!";
+        e.preventDefault();
     } else {
         localGuardianNameError.innerHTML = "";
     }
     if (localGuardianAddress === "" || localGuardianAddress == null) {
         localGuardianAddressError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         localGuardianAddressError.innerHTML = "";
     }
 
-    if (localGuardianAddress === "" || localGuardianAddress == null) {
-        Next2.onclick = function () {
-            Form2.style.left = "0px";
-            Form3.style.left = "";
-            progress.style.width = "50%";
-        };
-    } else {
-        Next2.onclick = function () {
-            Form2.style.left = "-4000px";
-            Form3.style.left = "0px";
-            progress.style.width = "75%";
-        };
+    if (!e.defaultPrevented) {
+        e.preventDefault();
+        Form2.style.left = "-4000px";
+        Form3.style.left = "0px";
+        progress.style.width = "75%";
     }
-});
+}
 
 //Email Validation
 
@@ -902,6 +1070,8 @@ function parPostalOnchange(postal) {
     if (postal === "" || postal == null) {
         par_PostalError.innerHTML = "Filed is Required!";
     } else {
+        console.log("par_postal");
+
         getFromStorage.ParmanentPostal = postal;
         localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
         par_PostalError.innerHTML = "";
@@ -1094,8 +1264,7 @@ function par_VillageOnchange(village) {
     }
 }
 
-Form3.addEventListener("submit", (e) => {
-    e.preventDefault();
+function onSubmit3(e) {
     let postalRegex = /^[0-9]{4}$/;
     let email = document.getElementById("email").value;
     let mobileNO = document.getElementById("mobileNO").value;
@@ -1139,29 +1308,34 @@ Form3.addEventListener("submit", (e) => {
     let par_VillageError = document.getElementById("par_VillageError");
     if (email === "" || email == null) {
         emailError.innerHTML = "Email is Required!";
+        e.preventDefault();
     } else {
         emailError.innerHTML = "";
     }
 
     if (mobileNO === "" || mobileNO == null) {
         mobileNOError.innerHTML = "Mobile NO is Required!";
+        e.preventDefault();
     } else {
         mobileNOError.innerHTML = "";
     }
 
     if (guardianNO === "" || guardianNO == null) {
         guardianNOError.innerHTML = "Mobile NO is Required!";
+        e.preventDefault();
     } else {
         guardianNOError.innerHTML = "";
     }
     if (localGuardianNO === "" || localGuardianNO == null) {
         localGuardianNOError.innerHTML = "Mobile NO is Required!";
+        e.preventDefault();
     } else {
         localGuardianNOError.innerHTML = "";
     }
 
     if (pre_Division === "" || pre_Division == null) {
         pre_DivisionError.innerHTML = "Filed is Required!";
+        e.preventDefault();
     } else {
         pre_DivisionError.innerHTML = "";
     }
@@ -1206,64 +1380,67 @@ Form3.addEventListener("submit", (e) => {
         par_VillageError.innerHTML = "";
     }
     if (pre_District === "" || pre_District == null) {
+        e.preventDefault();
         pre_DistrictError.innerHTML = "Filed is Required!";
     } else {
         pre_DistrictError.innerHTML = "";
     }
     if (pre_District === "" || pre_District == null) {
+        e.preventDefault();
         pre_DistrictError.innerHTML = "Filed is Required!";
     } else {
         pre_DistrictError.innerHTML = "";
     }
     if (pre_City === "" || pre_City == null) {
         pre_CityError.innerHTML = "Filed is Required!";
+        e.preventDefault();
     } else {
         pre_CityError.innerHTML = "";
     }
     if (pre_Postal === "" || pre_Postal == null) {
         pre_PostalError.innerHTML = "Filed is Required!";
+        e.preventDefault();
     } else if (!postalRegex.test(pre_Postal)) {
+        e.preventDefault();
         pre_PostalError.innerHTML = "Postal Code is Not Valid";
     } else {
         pre_PostalError.innerHTML = "";
     }
     if (par_Division === "" || par_Division == null) {
+        e.preventDefault();
         par_DivisionError.innerHTML = "Filed is Required!";
     } else {
         par_DivisionError.innerHTML = "";
     }
     if (par_District === "" || par_District == null) {
+        e.preventDefault();
         par_DistrictError.innerHTML = "Filed is Required!";
     } else {
         par_DistrictError.innerHTML = "";
     }
     if (par_City === "" || par_City == null) {
+        e.preventDefault();
         par_CityError.innerHTML = "Filed is Required!";
     } else {
         par_CityError.innerHTML = "";
     }
     if (par_Postal === "" || par_Postal == null) {
+        e.preventDefault();
         par_PostalError.innerHTML = "Filed is Required!";
     } else if (!postalRegex.test(par_Postal)) {
+        e.preventDefault();
         par_PostalError.innerHTML = "Postal Code is Not Valid";
     } else {
         par_PostalError.innerHTML = "";
     }
 
-    if (localGuardianNO === "" || localGuardianNO == null) {
-        Next3.onclick = function () {
-            Form3.style.left = "0px";
-            Form4.style.left = "";
-            progress.style.width = "75%";
-        };
-    } else {
-        Next3.onclick = function () {
-            Form3.style.left = "-4000px";
-            Form4.style.left = "0px";
-            progress.style.width = "100%";
-        };
+    if (!e.defaultPrevented) {
+        e.preventDefault();
+        Form3.style.left = "-4000px";
+        Form4.style.left = "0px";
+        progress.style.width = "100%";
     }
-});
+}
 
 //SSC Exam onchange
 
@@ -1682,8 +1859,7 @@ function hscGpaOnchange(hscGpa) {
     }
 }
 
-Form4.addEventListener("submit", (e) => {
-    e.preventDefault();
+function onSubmit4(e) {
     let exam = document.getElementById("exam").value;
     let submitButton = document.getElementById("submit");
     let year = document.getElementById("year").value;
@@ -1701,7 +1877,8 @@ Form4.addEventListener("submit", (e) => {
     let hscRoll = document.getElementById("hscRoll").value;
     let hscRegNO = document.getElementById("hscRegNO").value;
     let hscGpa = document.getElementById("hscGpa").value;
-    let examError = document.getElementById("examError");
+    let sscExamError = document.getElementById("sscExamError");
+    let interExamError = document.getElementById("interExamError");
     let yearError = document.getElementById("yearError");
     let boardError = document.getElementById("boardError");
     let instituateNameError = document.getElementById("instituateNameError");
@@ -1721,98 +1898,110 @@ Form4.addEventListener("submit", (e) => {
     let hscGpaError = document.getElementById("hscGpaError");
 
     if (exam === "" || exam == null) {
-        examError.innerHTML = "Field is Required!";
+        sscExamError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
-        examError.innerHTML = "";
+        sscExamError.innerHTML = "";
     }
     if (year === "" || year == null) {
+        e.preventDefault();
         yearError.innerHTML = "Field is Required!";
     } else {
         yearError.innerHTML = "";
     }
     if (board === "" || board == null) {
+        e.preventDefault();
         boardError.innerHTML = "Field is Required!";
     } else {
         boardError.innerHTML = "";
     }
     if (instituateName === "" || instituateName == null) {
+        e.preventDefault();
         instituateNameError.innerHTML = "Field is Required!";
     } else {
         instituateNameError.innerHTML = "";
     }
-    if (instituateName === "" || instituateName == null) {
-        instituateNameError.innerHTML = "Field is Required!";
-    } else {
-        instituateNameError.innerHTML = "";
-    }
+
     if (group === "" || group == null) {
         groupError.innerHTML = "Field is Required!";
+        e.preventDefault();
     } else {
         groupError.innerHTML = "";
     }
     if (roll === "" || roll == null) {
+        e.preventDefault();
         rollError.innerHTML = "Field is Required!";
     } else {
         rollError.innerHTML = "";
     }
 
     if (regNO === "" || regNO == null) {
+        e.preventDefault();
         regNOError.innerHTML = "Field is Required!";
     } else {
         regNOError.innerHTML = "";
     }
     if (gpa === "" || gpa == null) {
+        e.preventDefault();
         gpaError.innerHTML = "Field is Required!";
     } else {
         gpaError.innerHTML = "";
     }
     if (hscExam === "" || hscExam == null) {
+        e.preventDefault();
         hscExamError.innerHTML = "Field is Required!";
     } else {
         hscExamError.innerHTML = "";
     }
     if (hscYear === "" || hscYear == null) {
+        e.preventDefault();
         hscYearError.innerHTML = "Field is Required!";
     } else {
         hscYearError.innerHTML = "";
     }
     if (hscBoard === "" || hscBoard == null) {
+        e.preventDefault();
         hscBoardError.innerHTML = "Field is Required!";
     } else {
         hscBoardError.innerHTML = "";
     }
     if (hscInstituteName === "" || hscInstituteName == null) {
+        e.preventDefault();
         hscInstituteNameError.innerHTML = "Field is Required!";
     } else {
         hscInstituteNameError.innerHTML = "";
     }
     if (hscGroup === "" || hscGroup == null) {
+        e.preventDefault();
         hscGroupError.innerHTML = "Field is Required!";
     } else {
         hscGroupError.innerHTML = "";
     }
     if (hscRoll === "" || hscRoll == null) {
+        e.preventDefault();
         hscRollError.innerHTML = "Field is Required!";
     } else {
         hscRollError.innerHTML = "";
     }
     if (hscRegNO === "" || hscRegNO == null) {
+        e.preventDefault();
         hscRegNOError.innerHTML = "Field is Required!";
     } else {
         hscRegNOError.innerHTML = "";
     }
     if (hscGpa === "" || hscGpa == null) {
+        e.preventDefault();
         hscGpaError.innerHTML = "Field is Required!";
     } else {
         hscGpaError.innerHTML = "";
     }
+    console.log(e.defaultPrevented);
 
-    submitButton.onclick = function () {
-        console.log("Submit");
-
+    if (!e.defaultPrevented) {
+        e.preventDefault();
         window.location.pathname = "success.html";
-    };
-});
+    }
+}
 
 Back1.onclick = function () {
     Form1.style.left = "0px";
@@ -1896,120 +2085,6 @@ appGetType.value =
         : getFromStorage.ApplicationType;
 
 // International Student check
-function applicationType(type) {
-    let typeErrorMsg = document.getElementById("typeError");
-    let appGetType = document.getElementById("appGetType");
-    if (type.value === "" || type.value == null) {
-        typeErrorMsg.innerHTML = "Please Select a Field";
-    } else {
-        getFromStorage.ApplicationType = type.value;
-        localStorage.setItem("personalInfo", JSON.stringify(getFromStorage));
-        typeErrorMsg.innerHTML = "";
-    }
-
-    let bloodGroup = document.getElementById("bloodGroup");
-    let photo = document.getElementById("photo");
-    let hideBloodGr = document.getElementById("hideBloodGr");
-    let birth_cert = document.getElementById("birth_cert");
-    let medicalCert = document.getElementById("medicalCert");
-    let tribal = document.getElementById("tribal");
-    let passNoSpan = document.getElementById("passNoSpan");
-    let passNoError = document.getElementById("passNoError");
-    let hidePhoto = document.getElementById("hidePhoto");
-    let policeClearance = document.getElementById("policeClearance");
-    let passPhoto = document.getElementById("passPhoto");
-    let nation_id = document.getElementById("nation_id");
-    let pass_expire = document.getElementById("pass_expire");
-    let local_hidden = document.getElementById("local_hidden");
-    let division = document.getElementById("division");
-    let country = document.getElementById("country");
-    let state = document.getElementById("state");
-    let district = document.getElementById("district");
-    let localCity = document.getElementById("localCity");
-    let interCity = document.getElementById("interCity");
-    let village = document.getElementById("village");
-    let par_division_div = document.getElementById("par_division_div");
-    let par_district_div = document.getElementById("par_district_div");
-    let par_city_div = document.getElementById("par_city_div");
-    let par_postal_Code = document.getElementById("par_postal_Code");
-    let par_country_div = document.getElementById("par_country_div");
-    let par_state_div = document.getElementById("par_state_div");
-    let par_Village_div = document.getElementById("par_Village_div");
-    let par_interCity = document.getElementById("par_interCity");
-    let localSecondaryExam = document.getElementById("localSecondaryExam");
-    let localHigherExam = document.getElementById("localHigherExam");
-    let interNationHigherExam = document.getElementById(
-        "interNationHigherExam"
-    );
-    let interNationSecondaryExam = document.getElementById(
-        "interNationSecondaryExam"
-    );
-
-    if (type.value === "International Student") {
-        interNationHigherExam.style.display = "block";
-        interNationSecondaryExam.style.display = "block";
-        localSecondaryExam.style.display = "none";
-        localHigherExam.style.display = "none";
-        bloodGroup.style.display = "block";
-        photo.style.display = "block";
-        pass_expire.style.display = "block";
-        policeClearance.style.display = "block";
-        medicalCert.style.display = "block";
-        passPhoto.style.display = "block";
-        birth_cert.style.display = "none";
-        hideBloodGr.style.display = "none";
-        tribal.style.display = "none";
-        hidePhoto.style.display = "none";
-        nation_id.style.display = "none";
-        division.style.display = "none";
-        country.style.display = "block";
-        district.style.display = "none";
-        localCity.style.display = "none";
-        postalCode.style.display = "none";
-        par_division_div.style.display = "none";
-        par_district_div.style.display = "none";
-        par_city_div.style.display = "none";
-        par_postal_Code.style.display = "none";
-        passNoSpan.style.visibility = "visible";
-        passNoError.style.visibility = "visible";
-    } else if (type.value === "Local Student(Bangladeshi)") {
-        interNationHigherExam.style.display = "none";
-        interNationSecondaryExam.style.display = "none";
-        localSecondaryExam.style.display = "block";
-        localHigherExam.style.display = "block";
-        bloodGroup.style.display = "none";
-        photo.style.display = "none";
-        passNoSpan.style.visibility = "none";
-        passPhoto.style.display = "none";
-        policeClearance.style.display = "none";
-        medicalCert.style.display = "none";
-        pass_expire.style.display = "none";
-        birth_cert.style.display = "block";
-        nation_id.style.display = "block";
-        hidePhoto.style.display = "block";
-        tribal.style.display = "block";
-        state.style.display = "none";
-        country.style.display = "none";
-        interCity.style.display = "none";
-        village.style.display = "none";
-        par_division_div.style.display = "block";
-        par_district_div.style.display = "block";
-        par_interCity.style.display = "none";
-
-        par_postal_Code.style.display = "block";
-        par_country_div.style.display = "none";
-        par_state_div.style.display = "none";
-        par_Village_div.style.display = "none";
-    }
-
-    if (type.value === "" || type.value == null) {
-        Next1.onclick = function () {
-            Form1.style.left = "";
-            Form2.style.left = "";
-            progress.style.width = "0%";
-        };
-    }
-}
 
 function interOnchangeForm3() {
     let country = document.getElementById("country");

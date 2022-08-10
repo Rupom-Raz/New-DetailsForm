@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <!-- Form ---------- 1 ------------>
-                    <form id="form1" action="/" method="post">
+                    <form id="form1" onsubmit="return onSubmit1(event)">
                         <div class="row mt-4 ">
                             <div class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label  ">Application Type<span class="text-danger">
@@ -43,7 +43,7 @@
                                 <label class="form-control-label ">Full name<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return nameOnChange(this.value)" type="text" id="name" name="Name"
-                                    placeholder="Enter your full name">
+                                    placeholder="Enter your full name" value="">
                                 <div id="nameError" class="error"></div>
 
                             </div>
@@ -96,7 +96,7 @@
                                 </select>
                                 <div id="nationError" class="error"></div>
                             </div>
-                            <div class="form-group col-6 col-md-3 flex-column d-flex">
+                            <div class="form-group col-6 col-md-3 flex-column">
                                 <label class="form-control-label ">Date of Birth<span class="text-danger">
                                         *</span></label>
                                 <div id="date-picker-example"
@@ -127,7 +127,7 @@
                                 <label class="form-control-label ">Photo<span class="text-danger">
                                         *</span></label>
                                 <input name="Photo" onchange="return photoValidation(this.files)" type="file"
-                                    id="photoID" accept=".jpg,.png,.gif,.jpeg">
+                                    id="photoID" accept=".jpg,.png">
                                 <div id="photoError" class="error"></div>
                             </div>
                             <div id="nation_id" class="form-group col-6 col-md-3  flex-column">
@@ -135,7 +135,7 @@
                                 <input onchange="return nationIDOnchange(this.value)" type="number" id="nation_ID"
                                     name="NationalID" placeholder="National ID">
                             </div>
-                            <div class="form-group col-6 col-md-3 flex-column d-flex ">
+                            <div class="form-group col-6 col-md-3 flex-column  ">
                                 <label class="form-control-label ">Passport NO<span id="passNoSpan" class="text-danger"
                                         style="visibility: hidden;">
                                         *</span></label>
@@ -163,7 +163,7 @@
                                 <label class="form-control-label ">Passport Photocopy<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return passportPhotoOnchange(this.files) " type="file"
-                                    id="passportPhoto" name="PassportPhotoCopy" value="">
+                                    id="passportPhoto" name="PassportPhotoCopy" value="" accept=".jpg,.png">
                                 <div id="passPhotoError" class="error"></div>
                             </div>
                             <div id="tribal" class="form-group col-6 col-md-3 flex-column ">
@@ -181,21 +181,21 @@
                                 <label class="form-control-label ">Police Clearance<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return policeClearenceOnchange(this.files)" type="file"
-                                    id="police_clearence" name="PoliceClearance">
+                                    id="police_clearence" name="PoliceClearance" accept=".jpg,.png">
                                 <div id="policeClearError" class="error"></div>
                             </div>
                             <div id="medicalCert" class="form-group col-6 col-md-3  flex-column interStudent">
                                 <label class="form-control-label ">Medical Certificate<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return medicalCertificateOnchange(this.files)" type="file"
-                                    id="medicalCertificate" name="MedicalCertificate">
+                                    id="medicalCertificate" name="MedicalCertificate" accept=".jpg,.png">
                                 <div id="mediCertError" class="error"></div>
                             </div>
                             <div id="hidePhoto" class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">Photo<span class="text-danger">
                                         *</span></label>
                                 <input onchange="return photoValidation(this.files)" type="file" id="hidePhotoID"
-                                    name="Photo" accept=".jpg,.png,.gif,.jpeg">
+                                    name="Photo" accept=".jpg,.png">
                                 <div id="hidePhotoError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
@@ -213,7 +213,7 @@
                         </div>
                     </form>
                     <!-- Form ------- 2 ----------- -->
-                    <form id="form2" method="post" action="/">
+                    <form id="form2" onsubmit="return onSubmit2(event)">
                         <div class="row  mt-4">
                             <div class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">Father Name<span class="text-danger">
@@ -259,7 +259,7 @@
                                 <label class="form-control-label ">Guardian Photo<span class="text-danger">
                                         *</span></label>
                                 <input onchange="guardianPhotoHandle(this.files)" type="file" id="guardianPhoto"
-                                    accept=".jpg,.png,.jpeg" name="GuardianPhoto">
+                                    accept=".jpg,.png" name="GuardianPhoto">
                                 <div id="guardianPhotoError" class="error"></div>
                             </div>
                             <div class="form-group col-6 col-md-3 flex-column d-flex">
@@ -286,7 +286,7 @@
                         </div>
                     </form>
                     <!-- Form ----------3----------- -->
-                    <form id="form3" onchange="return applicationType(this)" method="post" action="/">
+                    <form id="form3" onchange="return applicationType(this)" onsubmit="return onSubmit3(event)">
                         <div class="row form3">
                             <div class="form-group col-6 col-md-3  flex-column">
                                 <label class="form-control-label ">Email<span class="text-danger">
@@ -511,7 +511,7 @@
                         </div>
                     </form>
                     <!-- Form --------4 --------------- -->
-                    <form id="form4" method="post" action="/">
+                    <form id="form4" onsubmit="return onSubmit4(event)">
                         <div class="row">
                             <h5 class="text-center ssc">Secondary School/Equivalent Information</h5>
                             <div class="form-group col-6 col-md-3 flex-column" id="localSecondaryExam">
