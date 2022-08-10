@@ -77,6 +77,8 @@ function applicationType(type) {
     let par_state_div = document.getElementById("par_state_div");
     let par_Village_div = document.getElementById("par_Village_div");
     let par_interCity = document.getElementById("par_interCity");
+    let localPassNo = document.getElementById("localPassNo");
+    let interPassNo = document.getElementById("interPassNo");
     let localSecondaryExam = document.getElementById("localSecondaryExam");
     let localHigherExam = document.getElementById("localHigherExam");
     let interNationHigherExam = document.getElementById(
@@ -92,6 +94,8 @@ function applicationType(type) {
         localSecondaryExam.style.display = "none";
         localHigherExam.style.display = "none";
         bloodGroup.style.display = "block";
+        interPassNo.style.display = "block";
+        localPassNo.style.display = "none";
         photo.style.display = "block";
         pass_expire.style.display = "block";
         policeClearance.style.display = "block";
@@ -122,6 +126,8 @@ function applicationType(type) {
         photo.style.display = "none";
         passNoSpan.style.visibility = "none";
         passPhoto.style.display = "none";
+        interPassNo.style.display = "none";
+        localPassNo.style.display = "block";
         policeClearance.style.display = "none";
         medicalCert.style.display = "none";
         pass_expire.style.display = "none";
@@ -494,11 +500,7 @@ function onSubmit1(e) {
     } else {
         hidePhotoError.innerHTML = "";
     }
-    if (
-        passport_NODisplay === "block" &&
-        (passport_NO === "" || passport_NO == null)
-    ) {
-        e.preventDefault();
+    if (passport_NO === "" || passport_NO == null) {
         passNoError.innerHTML = "Passport NO is Required!";
     } else {
         passNoError.innerHTML = "";
